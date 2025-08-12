@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CIC",
+    "IRI",
+    "CIC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:packed_ice"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:compass"
+    }
+  },
+  "result": {
+    "item": "yourmodid:cryo_compass"
+  }
+}

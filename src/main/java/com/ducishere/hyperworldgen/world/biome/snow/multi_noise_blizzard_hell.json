@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:multi_noise",
+  "biomes": [
+    {
+      "biome": "hypergenworld:blizzard_hell",
+      "parameters": {
+        "temperature": -0.95,
+        "humidity": 0.0,
+        "continentalness": 0.1,
+        "erosion": 0.3,
+        "depth": 0.2,
+        "weirdness": 0.25,
+        "offset": 0
+      },
+      "weight": 45
+    }
+  ]
+}
