@@ -3,7 +3,7 @@ package com.ducishere.hyperworldgen.thirst;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.api.ClientModInitializer;
 import com.ducishere.hyperworldgen.thirst.network.PacketHandler;
-importt com.ducishere.hyperworldgen.thirst.system.StatusManager;
+import com.ducishere.hyperworldgen.thirst.system.StatusManager;
 
 public class MainMod implements ModInitializer, ClientModInitializer {
     @Override
