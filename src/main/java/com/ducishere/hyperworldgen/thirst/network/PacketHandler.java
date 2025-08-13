@@ -1,4 +1,4 @@
-package com.example.thirst.network;
+package com.ducishere.hyperworldgen.thirst.network;
 
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.networking.v1.ClientPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 import net.minecraft.server.network.ServerPlayerEntity;
-import com.example.thirst.client.ClientData;
+import com.ducishere.hyperworldgen.thirst.client.ClientData;
 
 public class PacketHandler {
     public static final Identifier SYNC_STATUS = new Identifier("modid", "sync_status");
