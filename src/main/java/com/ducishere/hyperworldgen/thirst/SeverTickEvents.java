@@ -1,8 +1,8 @@
-package com.example.thirst;
+package com.ducishere.hyperworldgen.thirst;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.network.ServerPlayerEntity;
-import com.example.thirst.network.PacketHandler;
+import com.ducishere.hyperworldgen.thirst.network.PacketHandler;
 
 import java.util.HashMap;
 import java.util.Map;
