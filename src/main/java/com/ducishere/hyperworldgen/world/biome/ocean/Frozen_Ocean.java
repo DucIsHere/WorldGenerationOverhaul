@@ -33,6 +33,6 @@ public class Frozen_Ocean {
     SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
     spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.DROWNED, 5, 1, 2));
     spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.GURDIAN, 3, 1, 2));
-    spawnBuilder.spawn(SpawnGrouo.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE,
+    spawnBuilder.spawn(SpawnGrouo.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE,4, 1, 2,));
   }
 }
