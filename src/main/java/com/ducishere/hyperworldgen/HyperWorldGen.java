@@ -17,24 +17,20 @@ public class HyperWorldGen implements ModInitializer {
     public void onInitialize() {
         System.out.println("Initializing HyperWorldGen...");
 
-        // 1. Register Blocks
+        
         ModBlocks.registerBlocks();
 
-        // 2. Register Items
+        
         ModItems.registerItems();
 
-        // 3. Register Effects
+        
         ModEffects.registerModEffects();
 
-        // 4. Register Features
+        
         ModConfiguredFeatures.bootstrap();
         ModPlacedFeatures.bootstrap();
 
-        // 5. Register Biome-specific structures or features
-        // Example: add SnowLayer feature
-        // BiomeRegistry.addFeatureToBiome(Biomes.ICE_PLAINS, ModPlacedFeatures.SNOW_LAYER_8_PLACED);
-
-        // 6. Register handlers
+        ModBiomes.registerBiomes();
         FrostbiteHandler.register();
     }
 }
