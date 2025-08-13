@@ -2,9 +2,9 @@ package com.ducishere.hyperworldgen.thirst.system;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.network.ServerPlayerEntity;
-import com.example.thirst.ThirstComponent;
-import com.example.temp.TemperatureComponent;
-import com.example.thirst.network.PacketHandler;
+import com.ducishere.hyperworldgen.thirst.ThirstComponent;
+import com.ducishere.hyperworldgen.temp.TemperatureComponent;
+import com.ducishere.hyperworldgen.thirst.network.PacketHandler;
 
 import java.util.HashMap;
 import java.util.Map;
