@@ -1,4 +1,4 @@
-package com.ducishere.hyperworldgen.thirst.network;
+package com.example.thirst.network;
 
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -9,20 +9,25 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import com.example.thirst.client.ClientData;
 
 public class PacketHandler {
-    public static final Identifier SYNC_THIRST = new Identifier("modid", "sync_thirst");
+    public static final Identifier SYNC_STATUS = new Identifier("modid", "sync_status");
 
-    // Server gửi
-    public static void sendThirst(ServerPlayerEntity player, int thirst) {
+    // Server gửi cả thirst + temp
+    public static void sendStatus(ServerPlayerEntity player, int thirst, int temp) {
         PacketByteBuf buf = PacketByteBufs.create();
         buf.writeInt(thirst);
-        ServerPlayNetworking.send(player, SYNC_THIRST, buf);
+        buf.writeInt(temp);
+        ServerPlayNetworking.send(player, SYNC_STATUS, buf);
     }
 
     // Client nhận
     public static void registerClientReceiver() {
-        ClientPlayNetworking.registerGlobalReceiver(SYNC_THIRST, (client, handler, buf, sender) -> {
+        ClientPlayNetworking.registerGlobalReceiver(SYNC_STATUS, (client, handler, buf, sender) -> {
             int thirst = buf.readInt();
-            client.execute(() -> ClientData.thirst = thirst);
+            int temp = buf.readInt();
+            client.execute(() -> {
+                ClientData.thirst = thirst;
+                ClientData.temperature = temp;
+            });
         });
     }
 }
