@@ -1,4 +1,4 @@
-package your.mod.utils;
+package com.ducishere.hyperworldgen.util;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SnowBlock;
