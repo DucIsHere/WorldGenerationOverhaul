@@ -8,8 +8,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 public class ClientInit implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        // Đăng ký HUD render cho reward popup
         HudRenderCallback.EVENT.register(new RewardHudOverlay());
+        HudRenderCallback.EVENT.register(new HudRenderer());
 
         // Đăng ký packet listener client-side
         RewardNetworkClient.register();
