@@ -224,7 +224,66 @@ public class HyperWorldGenDesert {
             .build()
 
         MobSpawnSettings spawn = new MobSpawnSettings.Builder()
-        spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType
+        spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.HUSK, 5, 2, 3))
+
+        return  new Biome.BiomeBuilder()
+            .precipitation(Biome.Precipitaion.DESERT)
+            .temperature(4.25f + (index * 0.02f))
+            .downfall(0.00f)
+            .specialEffects(effects)
+            .MobSpawnSettings(spawn)
+            .generationSettings(generation)
+            .build();
+            
     }
+
+    private static Biome dryroot_valley(int index) {
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+            .fogColor(0xE0CDA9)
+            .waterColor(0xE3DDB4)
+            .waterFogColor(0xD1C59A)
+            .skyColor(0xFFD580)
+            .build()
+
+        BiomeGenerationSettings generation = new BiomeGenerationSettings.Builder()
+            .build()
+
+        MobSpawnSettings spawn = new MobSpawnSettings.Builder()
+            .build()
+
+        return new Biome.BiomeBuilder()
+            .precipitation(Biome.Precipitaion.DESERT)
+            .temperature(4.25f + (index * 0.02f))
+            .downfall(0.00f)
+            .specialEffects(effects)
+            .MobSpawnSettings(spawn)
+            .generationSettings(generation)
+            .build();
+
+        
+    }
+
+    private static Biome tomb_valley(int index) {
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+            .fogColor(0xE0CDA9)
+            .waterColor(0xE3DDB4)
+            .waterFogColor(0xD1C59A)
+            .skyColor(0xFFD580)
+            .build()
+
+        BiomeGenerationSettings generation = new BiomeGenerationSettings.Builder()
+            .build()
+
+        MobSpawnSettings spawn = new MobSpawnSettings.Builder()
+            .build()
+
+        return new Biome.BiomeBuilder()
+            .precipitation(Biome.Precipitaion.DESERT)
+            .temperature(5.00f + (index * 0.02f))
+            .downfall(0.00f)
+            .specialEffects(effects)
+            .MobSpawnSettings(spawn)
+            .generationSettings(generation)
+            .build();
     
 }
