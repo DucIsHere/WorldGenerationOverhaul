@@ -211,5 +211,20 @@ public class HyperWorldGenDesert {
             .generationSettings(generation)
             .build();
     }
+
+    private static Biome obsidian_ridges(int index) {
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+            .fogColor(0xE0CDA9)
+            .waterColor(0xE3DDB4)
+            .waterFogColor(0xD1C59A)
+            .skyColor(0xFFD580)
+            .build()
+
+        BiomeGenerationSettings generation = new BiomeGenerationSettings.Builder()
+            .build()
+
+        MobSpawnSettings spawn = new MobSpawnSettings.Builder()
+        spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType
+    }
     
 }
