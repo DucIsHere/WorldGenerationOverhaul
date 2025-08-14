@@ -34,5 +34,21 @@ public class Frozen_Ocean {
     spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.DROWNED, 5, 1, 2));
     spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.GURDIAN, 3, 1, 2));
     spawnBuilder.spawn(SpawnGrouo.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE,4, 1, 2,));
-  }
+
+    GenerationSettings.Builder genBuilder = new GenerationSettings.Builder();
+    genBuilder.surfaceBuilder(ConfiguredSurfaceBuilders.OCEAN);
+
+    return Biome.Builder()
+      .precipitaion(Biome.Precipitation.NONE)
+      .temperature(0.5F)
+      .downfall(1.0F)
+      .effects(new BiomeEffects.Builder()
+          .waterColor(4020182)
+          .waterFogColor(329011)
+          .build())
+      .spawnSettings(spawnBuilder.build())
+      .generationSettings(genBuilder.build())
+      .build();
+    
+      }
 }
