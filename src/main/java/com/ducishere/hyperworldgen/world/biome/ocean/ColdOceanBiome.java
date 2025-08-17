@@ -1,4 +1,4 @@
-package yourmodid.biome;
+package com.ducishere.hyperworldgen.world.biome.ocean;
 
 import net.minecraft.world.biome.*;
 
