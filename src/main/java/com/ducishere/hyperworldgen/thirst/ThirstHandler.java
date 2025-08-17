@@ -22,7 +22,6 @@ public class ThirstHandlerFullHardcore {
     private static final int IN_WORLD_DRINK_COOLDOWN = 3*20;
     private static int inWorldDrinkTimer = 0;
 
-    // Tick logic + hardcore damage
     public static void onPlayerTick(Player player){
         if(!ModConfig.thirst.enableThirst || player.level().isClientSide()) return;
 
@@ -46,7 +45,6 @@ public class ThirstHandlerFullHardcore {
         } else thirst.setTickTimer(0);
     }
 
-    // Drink items (FD + vanilla)
     public static void onItemUseFinish(Player player, ItemStack drink){
         if(!ModConfig.thirst.enableThirst || player.level().isClientSide()) return;
         IThirst thirst = ThirstHelper.getThirst(player);
@@ -63,7 +61,6 @@ public class ThirstHandlerFullHardcore {
         }
     }
 
-    // Hand drinking
     public static boolean canHandDrink(Player player, InteractionHand hand){
         return ModConfig.thirst.enableThirst &&
                ModConfig.thirst.enableHandDrinking &&
@@ -74,7 +71,6 @@ public class ThirstHandlerFullHardcore {
                inWorldDrinkTimer <= 0;
     }
 
-    // In-world drinking
     public static void tryDrinkWaterInWorld(Player player){
         Level world = player.level();
         BlockHitResult rayTraceResult = (BlockHitResult) player.pick(5.0D,0.0F,false);
