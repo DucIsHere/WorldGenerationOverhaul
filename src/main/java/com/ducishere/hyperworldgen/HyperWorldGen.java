@@ -6,6 +6,9 @@ import com.ducishere.hyperworldgen.item.ModItems;
 import com.ducishere.hyperworldgen.world.feature.ModConfiguredFeatures;
 import com.ducishere.hyperworldgen.world.feature.ModPlacedFeatures;
 import com.ducishere.hyperworldgen.handler.FrostbiteHandler;
+import net.fabricmc.fabric.api.event.lifecycle.v1.SeverTickEvents;
+import net.minecraft.sever.world.ServerWorld;
+import com.ducishere.hyperworldgen.environment.ColdEnvironment;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -32,5 +35,10 @@ public class HyperWorldGen implements ModInitializer {
 
         ModBiomes.registerBiomes();
         FrostbiteHandler.register();
+
+        SeverTickEvents.END_WORLD_TICK.register(world -> {
+            if(world instanceof ServerWorld serverWorld){
+                ColdEnvironment.tick(serverWorld);
+        }
     }
 }
