@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "hyperworldgen:item/music_disc_free_luck"
+  }
+}
