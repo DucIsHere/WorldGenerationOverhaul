@@ -2,7 +2,6 @@ package com.ducishere.hyperworldgen.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -16,15 +15,18 @@ public class ModBlocks {
 
     public static void registerBlocks() {
         SOUL_LANTERN = Registry.register(
-                Registries.BLOCK,
-                new Identifier("hyperworldgen", "soul_lantern"),
-                new Block(FabricBlockSettings.of(Material.GLASS).strength(1.0f).luminance(10))
+            Registries.BLOCK,
+            new Identifier("hyperworldgen", "soul_lantern"),
+            new SoulLanternBlock(FabricBlockSettings.of(net.minecraft.block.Material.GLASS)
+                .strength(1.0f)
+                .luminance(10)
+                .nonOpaque())
         );
 
         Registry.register(
-                Registries.ITEM,
-                new Identifier("hyperworldgen", "soul_lantern"),
-                new BlockItem(SOUL_LANTERN, new Item.Settings().group(ItemGroup.DECORATIONS))
+            Registries.ITEM,
+            new Identifier("hyperworldgen", "soul_lantern"),
+            new BlockItem(SOUL_LANTERN, new Item.Settings().group(ItemGroup.DECORATIONS))
         );
     }
 }
