@@ -8,7 +8,6 @@ import com.ducishere.hyperworldgen.thirst.system.StatusManager;
 public class MainMod implements ModInitializer, ClientModInitializer {
     @Override
     public void onInitialize() {
-        ThirstManager.init();
         StatusManager.init();
     }
 
