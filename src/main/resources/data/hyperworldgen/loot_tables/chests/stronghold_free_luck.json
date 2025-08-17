@@ -6,30 +6,34 @@
         {
           "type": "item",
           "name": "hyperworldgen:music_disc_free_luck",
-          "weight": 1,   // Hiếm: 1/10
+          "weight": 1,
           "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1
-            },
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{CustomName:'{\"text\":\"FREE luck\"}'}"
-            }
+            { "function": "minecraft:set_count", "count": 1 },
+            { "function": "minecraft:set_nbt", "tag": "{CustomName:'{\"text\":\"FREE luck\"}'}" }
           ]
         },
         {
           "type": "item",
           "name": "minecraft:gold_ingot",
-          "weight": 9,   // Phổ biến
+          "weight": 10,
           "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 5
-              }
-            }
+            { "function": "minecraft:set_count", "count": { "min": 1, "max": 5 } }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_ingot",
+          "weight": 10,
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "min": 1, "max": 5 } }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:bread",
+          "weight": 10,
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "min": 1, "max": 3 } }
           ]
         }
       ]
