@@ -1,27 +1,30 @@
 package com.ducishere.hyperworldgen.block;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    public static Block CRYO_LANTERN;
+
+    public static Block SOUL_LANTERN;
 
     public static void registerBlocks() {
-        CRYO_LANTERN = Registry.register(Registries.BLOCK,
-                new Identifier("hyperworldgen", "cryo_lantern"),
-                new Block(Block.Settings.of(Material.METAL).strength(3.0f).luminance(15)));
-        System.out.println("Blocks registered");
-    }
+        SOUL_LANTERN = Registry.register(
+                Registries.BLOCK,
+                new Identifier("hyperworldgen", "soul_lantern"),
+                new Block(FabricBlockSettings.of(Material.GLASS).strength(1.0f).luminance(10))
+        );
 
-    // Tick Soul Lantern mỗi tick
-// Chỉ cần gọi trong event world tick
-public static void tickSoulLanterns(ServerWorld world) {
-    for (BlockPos pos : SoulLanternPositions) { // list lưu vị trí lantern nếu muốn
-        ColdAura.tick(world, pos);
+        Registry.register(
+                Registries.ITEM,
+                new Identifier("hyperworldgen", "soul_lantern"),
+                new BlockItem(SOUL_LANTERN, new Item.Settings().group(ItemGroup.DECORATIONS))
+        );
     }
-}
 }
