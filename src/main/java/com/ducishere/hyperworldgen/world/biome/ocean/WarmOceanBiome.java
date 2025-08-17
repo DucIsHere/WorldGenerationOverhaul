@@ -1,4 +1,4 @@
-package yourmodid.biome;
+package com.ducishere.hyperworldgen.world.biome.ocean;
 
 import net.minecraft.world.biome.*;
 
@@ -12,7 +12,7 @@ public class WarmOceanBiome {
                         .waterColor(4445678)
                         .waterFogColor(270131)
                         .fogColor(12638463)
-                        .skyColor(8037887)
+                        .skyColor(8843041)
                         .build())
                 .spawnSettings(new SpawnSettings.Builder().build())
                 .generationSettings(new GenerationSettings.Builder().build())
