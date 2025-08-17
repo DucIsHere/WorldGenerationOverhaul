@@ -8,11 +8,9 @@ import com.ducishere.hyperworldgen.thirst.system.StatusManager;
 public class MainMod implements ModInitializer, ClientModInitializer {
     @Override
     public void onInitialize() {
-        StatusManager.init();
     }
 
     @Override
     public void onInitializeClient() {
-        PacketHandler.registerClientReceiver();
     }
 }
