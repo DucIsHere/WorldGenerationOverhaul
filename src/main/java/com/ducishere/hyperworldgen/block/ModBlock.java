@@ -16,4 +16,12 @@ public class ModBlocks {
                 new Block(Block.Settings.of(Material.METAL).strength(3.0f).luminance(15)));
         System.out.println("Blocks registered");
     }
+
+    // Tick Soul Lantern mỗi tick
+// Chỉ cần gọi trong event world tick
+public static void tickSoulLanterns(ServerWorld world) {
+    for (BlockPos pos : SoulLanternPositions) { // list lưu vị trí lantern nếu muốn
+        ColdAura.tick(world, pos);
+    }
+}
 }
