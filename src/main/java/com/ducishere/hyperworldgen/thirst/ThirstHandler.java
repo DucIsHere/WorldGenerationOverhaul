@@ -1,4 +1,4 @@
-package toughasnails.thirst;
+package com.ducishere.hyperworldgen.thirst;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
@@ -13,22 +13,21 @@ import toughasnails.api.thirst.ThirstHelper;
 import toughasnails.init.ModConfig;
 import toughasnails.init.ModPackets;
 import toughasnails.network.DrinkInWorldPacket;
-import toughasnails.api.thirst.IThirst;
 import com.ducishere.hyperworldgen.seasons.SeasonManager;
 import com.ducishere.hyperworldgen.farmerdelight.FDCompat;
+import toughasnails.api.thirst.IThirst;
 
 public class ThirstHandlerFullHardcore {
 
-    private static final int IN_WORLD_DRINK_COOLDOWN = 3 * 20;
+    private static final int IN_WORLD_DRINK_COOLDOWN = 3*20;
     private static int inWorldDrinkTimer = 0;
 
-    // ----- Tick logic + hardcore damage -----
-    public static void onPlayerTick(Player player) {
+    // Tick logic + hardcore damage
+    public static void onPlayerTick(Player player){
         if(!ModConfig.thirst.enableThirst || player.level().isClientSide()) return;
 
         IThirst thirst = ThirstHelper.getThirst(player);
 
-        // --- Exhaustion reduces hydration / thirst ---
         double threshold = ModConfig.thirst.thirstExhaustionThreshold;
         if(thirst.getExhaustion() > threshold){
             thirst.addExhaustion((float)-threshold);
@@ -36,28 +35,22 @@ public class ThirstHandlerFullHardcore {
             else thirst.setThirst(Math.max(thirst.getThirst()-1,0));
         }
 
-        // --- Hardcore thirst damage ---
         if(thirst.getThirst() <= 0){
             thirst.addTicks(1);
             if(thirst.getTickTimer() >= 80){
-                if(player.getHealth() > 1.0F) {
-                    // hardcore: always damage
+                if(player.getHealth() > 1.0F){
                     player.hurt(player.damageSources().source("thirst"),1.0F);
                 }
                 thirst.setTickTimer(0);
             }
         } else thirst.setTickTimer(0);
-
-        // Optional: auto increment thirst on peaceful mode
-        // if needed
     }
 
-    // ----- Drink items (FD + vanilla) -----
+    // Drink items (FD + vanilla)
     public static void onItemUseFinish(Player player, ItemStack drink){
         if(!ModConfig.thirst.enableThirst || player.level().isClientSide()) return;
         IThirst thirst = ThirstHelper.getThirst(player);
 
-        // Farmer's Delight drink
         if(FDCompat.isFDDrink(drink)){
             int drink_thirst = FDCompat.getThirstRestored(drink);
             float drink_hydration = FDCompat.getHydrationModifier(drink);
@@ -65,13 +58,12 @@ public class ThirstHandlerFullHardcore {
             return;
         }
 
-        // Vanilla water/potion fallback
         if(drink.is(Items.POTION)){
             thirst.drink(4,1.0F);
         }
     }
 
-    // ----- Hand drinking check -----
+    // Hand drinking
     public static boolean canHandDrink(Player player, InteractionHand hand){
         return ModConfig.thirst.enableThirst &&
                ModConfig.thirst.enableHandDrinking &&
@@ -82,7 +74,7 @@ public class ThirstHandlerFullHardcore {
                inWorldDrinkTimer <= 0;
     }
 
-    // ----- In-world water drinking -----
+    // In-world drinking
     public static void tryDrinkWaterInWorld(Player player){
         Level world = player.level();
         BlockHitResult rayTraceResult = (BlockHitResult) player.pick(5.0D,0.0F,false);
@@ -97,18 +89,7 @@ public class ThirstHandlerFullHardcore {
         }
     }
 
-    // ----- Client tick cooldown -----
     public static void onClientTick(){
-        if(inWorldDrinkTimer > 0) inWorldDrinkTimer--;
-    }
-
-    // ----- Hardcore tweaks -----
-    public static void applySeasonModifier(IThirst thirst){
-        float seasonModifier = 1.0F;
-        if(SeasonManager.isSummer()) seasonModifier = 0.8F;
-        else if(SeasonManager.isWinter()) seasonModifier = 1.2F;
-
-        // Apply directly to hydration to tweak hardcore effect
-        thirst.setHydration(thirst.getHydration() * seasonModifier);
+        if(inWorldDrinkTimer>0) inWorldDrinkTimer--;
     }
 }
