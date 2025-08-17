@@ -1,9 +1,20 @@
 package com.ducishere.hyperworldgen.world.biome.ocean;
 
 import net.minecraft.world.biome.*;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class WarmOceanBiome {
     public static Biome create() {
+        SpawnSettings.Builder spawn = new SpawnSettings.Builder();
+        spawn.creatureSpawnProbability(0.2f);
+        DefaultBiomeFeatures.addOceanMobs(spawn, 20, 3, 6);
+
+        GenerationSettings.Builder gen = new GenerationSettings.Builder();
+        DefaultBiomeFeatures.addOceanCarvers(gen);
+        DefaultBiomeFeatures.addOceanStructures(gen);
+        DefaultBiomeFeatures.addDefaultOres(gen);
+        DefaultBiomeFeatures.addWarmOceanFeatures(gen);
+
         return new Biome.Builder()
                 .precipitation(true)
                 .temperature(1.0f)
@@ -14,8 +25,8 @@ public class WarmOceanBiome {
                         .fogColor(12638463)
                         .skyColor(8843041)
                         .build())
-                .spawnSettings(new SpawnSettings.Builder().build())
-                .generationSettings(new GenerationSettings.Builder().build())
+                .spawnSettings(spawn.build())
+                .generationSettings(gen.build())
                 .build();
     }
 }
