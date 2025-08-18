@@ -12,56 +12,84 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
-    // Music disc example
+    // Music / Block items
     public static Item CRYO_LANTERN_ITEM;
     public static Item FREE_LUCK_DISC_ITEM;
 
-    // Steel Abyss items
+    // Steel progression items
     public static Item STEEL_ABYSS_ORE;
     public static Item STEEL_ABYSS_SCRAP;
     public static Item STEEL_BASIC;
     public static Item STEEL_ABYSS_INGOT;
+    public static Item STEEL_REINFORCED;
+    public static Item ICE_CRYSTAL;
+    public static Item ICE_STEEL_REINFORCED;
 
     public static void registerItems() {
-        // Example block item
+
+        // Cryo Lantern (block item)
         CRYO_LANTERN_ITEM = Registry.register(
                 Registries.ITEM,
                 new Identifier("hyperworldgen", "cryo_lantern"),
                 new BlockItem(ModBlocks.CRYO_LANTERN, new Item.Settings().group(ItemGroup.DECORATIONS))
         );
 
-        // Music disc example
+        // Music disc
         FREE_LUCK_DISC_ITEM = Registry.register(
                 Registries.ITEM,
                 new Identifier("hyperworldgen", "music_disc_free_luck"),
                 new MusicDiscItem(10, ModSounds.FREE_LUCK_DISC, new Item.Settings().group(ItemGroup.MISC))
         );
 
-        // Steel Abyss items
+        // Steel Abyss Ore
         STEEL_ABYSS_ORE = Registry.register(
                 Registries.ITEM,
                 new Identifier("hyperworldgen", "steel_abyss_ore"),
                 new Item(new Item.Settings().group(ItemGroup.MISC))
         );
 
+        // Steel Abyss Scrap
         STEEL_ABYSS_SCRAP = Registry.register(
                 Registries.ITEM,
                 new Identifier("hyperworldgen", "steel_abyss_scrap"),
                 new Item(new Item.Settings().group(ItemGroup.MISC))
         );
 
-        STEEL_BASIC = Registry.register(
+        // Steel Basic
+        STEEL_INGOT = Registry.register(
                 Registries.ITEM,
                 new Identifier("hyperworldgen", "steel_basic"),
                 new Item(new Item.Settings().group(ItemGroup.MISC))
         );
 
+        // Steel Abyss Ingot
         STEEL_ABYSS_INGOT = Registry.register(
                 Registries.ITEM,
                 new Identifier("hyperworldgen", "steel_abyss_ingot"),
                 new Item(new Item.Settings().group(ItemGroup.MISC))
         );
 
-        System.out.println("Items registered");
+        // Steel Reinforced
+        STEEL_REINFORCED_INGOT = Registry.register(
+                Registries.ITEM,
+                new Identifier("hyperworldgen", "steel_reinforced"),
+                new Item(new Item.Settings().group(ItemGroup.MISC))
+        );
+
+        // Ice Crystal
+        ICE_SHARD = Registry.register(
+                Registries.ITEM,
+                new Identifier("hyperworldgen", "ice_crystal"),
+                new Item(new Item.Settings().group(ItemGroup.MISC))
+        );
+
+        // Ice Steel Reinforced
+        ICE_STEEL_REINFORCED_INGOT = Registry.register(
+                Registries.ITEM,
+                new Identifier("hyperworldgen", "ice_steel_reinforced"),
+                new Item(new Item.Settings().group(ItemGroup.MISC))
+        );
+
+        System.out.println("All ModItems registered");
     }
 }
