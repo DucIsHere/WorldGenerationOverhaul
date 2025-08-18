@@ -25,6 +25,8 @@ public class HyperWorldGen implements ModInitializer {
 
         
         ModItems.registerItems();
+        SteelIngot.register();
+
 
         
         ModEffects.registerModEffects();
