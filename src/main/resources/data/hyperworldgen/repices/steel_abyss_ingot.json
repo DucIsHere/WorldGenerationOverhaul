@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SBS",
+    "SSS"
+  ],
+  "key": {
+    "S": { "item": "hyperworldgen:steel_abyss_scrap" },
+    "B": { "item": "hyperworldgen:steel_basic" }
+  },
+  "result": {
+    "item": "hyperworldgen:steel_abyss_ingot",
+    "count": 1
+  }
+}
