@@ -16,8 +16,8 @@ public class ModRecipes {
             "", // group
             new ItemStack(ModItems.STEEL_ABYSS_SCRAP),
             ModItems.STEEL_ABYSS_ORE.getDefaultStack(),
-            1.0f, // experience
-            40000  // cook time in ticks
+            90000.0f, // experience
+            160000  // cook time in ticks
         );
 
         Registry.register(Registry.RECIPE_SERIALIZER, 
