@@ -32,6 +32,8 @@ public class HyperWorldGen implements ModInitializer {
         IceSteelReinforcedIngot.register();
         SteelArmorUpgrade.register();
 
+        ModRepices.registerRepices();
+
 
         
         ModEffects.registerModEffects();
