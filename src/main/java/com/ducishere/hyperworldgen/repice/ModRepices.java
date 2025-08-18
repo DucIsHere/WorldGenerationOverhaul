@@ -52,13 +52,14 @@ public class ModRecipes {
                 RecipeCategory.MISC,
                 ModItems.ICE_STEEL_REINFORCED_INGOT,
                 """
-                III
-                IR I
-                III
+                EIE
+                IRI
+                EIE
                 """
         )
         .input('I', ModItems.ICE_SHARD)
         .input('R', ModItems.STEEL_REINFORCED_INGOT)
+        .input('E', ModItems.GOLD_INGOT)
         .build(Registry.RECIPE_SERIALIZER, new Identifier("hyperworldgen", "ice_steel_reinforced"));
     }
 }
