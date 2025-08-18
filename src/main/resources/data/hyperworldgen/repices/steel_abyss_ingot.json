@@ -7,7 +7,7 @@
   ],
   "key": {
     "S": { "item": "hyperworldgen:steel_abyss_scrap" },
-    "B": { "item": "hyperworldgen:steel_basic" }
+    "B": { "item": "hyperworldgen:steel_ingot" }
   },
   "result": {
     "item": "hyperworldgen:steel_abyss_ingot",
