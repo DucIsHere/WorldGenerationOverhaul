@@ -30,6 +30,10 @@ public class HyperWorldGen implements ModInitializer {
         SteelAbyssIngot.register();
         GlacialIceShard.register();
 
+        SteelReinforcedNetherite.register();
+        IceSteelIngot.register();
+        SteelArmorUpgrade.register();
+
 
         
         ModEffects.registerModEffects();
