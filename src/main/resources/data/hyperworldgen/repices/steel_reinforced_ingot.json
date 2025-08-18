@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BIB",
+    "BBB"
+  ],
+  "key": {
+    "B": { "item": "hyperworldgen:netherite_ingot" },
+    "I": { "item": "hyperworldgen:steel_abyss_ingot" }
+  },
+  "result": {
+    "item": "hyperworldgen:steel_reinforced",
+    "count": 1
+  }
+}
