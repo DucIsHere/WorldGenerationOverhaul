@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "III",
+    "EIE",
     "IRI",
-    "III"
+    "EIE"
   ],
   "key": {
     "I": { "item": "hyperworldgen:ice_shard" },
