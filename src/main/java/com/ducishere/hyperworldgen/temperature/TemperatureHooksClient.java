@@ -1,19 +1,56 @@
 package toughasnails.temperature;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.resources.ResourceLocation;
-import toughasnails.api.temperature.TemperatureHelper;
-import toughasnails.init.ModConfig;
+import net.minecraft.client.player.LocalPlayer;
+import toughasnails.api.player.ITANPlayer;
+import toughasnails.temperature.Temperature;
 
 public class TemperatureHooksClient {
 
-    private static final ResourceLocation OVERHEATED_HEART = new ResourceLocation("toughasnails:hud/heart/overheated_full");
+    /**
+     * Kiểm tra có nên override heart render hay không.
+     * Chỉ override khi player ở trạng thái nhiệt độ nguy hiểm (Cold / Hot).
+     */
+    public static boolean shouldOverrideHearts() {
+        Minecraft mc = Minecraft.getInstance();
+        LocalPlayer player = mc.player;
 
-    public static void heartBlit(GuiGraphics gui, Gui.HeartType heartType, int x, int y, boolean isHardcore, boolean isBlinking, boolean isHalf) {
-        var player = Minecraft.getInstance().player;
-        if (TemperatureHelper.isFullyHyperthermic(player)) gui.blitSprite(gui.getShader(), OVERHEATED_HEART, x, y, 9, 9);
-        else gui.blitSprite(gui.getShader(), heartType.getSprite(isHardcore, isHalf, isBlinking), x, y, 9, 9);
+        if (player == null) {
+            return false; // chưa có player thì thôi
+        }
+
+        ITANPlayer tanPlayer = (ITANPlayer) player;
+
+        // Lấy state nhiệt độ từ player
+        Temperature.State state = tanPlayer.getTemperatureStats().getState();
+
+        // Nếu đang ở trạng thái nguy hiểm -> override heart
+        return state == Temperature.State.COLD || state == Temperature.State.HOT;
+    }
+
+    /**
+     * Custom render heart (vanilla đã bị cancel trong mixin).
+     * Tùy vào state sẽ render texture khác.
+     */
+    public static void heartBlit(
+            net.minecraft.client.gui.GuiGraphics gui,
+            net.minecraft.client.gui.Gui.HeartType heartType,
+            int x, int y,
+            boolean isHardcore, boolean isBlinking, boolean isHalf
+    ) {
+        Minecraft mc = Minecraft.getInstance();
+        ITANPlayer tanPlayer = (ITANPlayer) mc.player;
+
+        if (tanPlayer == null) return;
+
+        Temperature.State state = tanPlayer.getTemperatureStats().getState();
+
+        if (state == Temperature.State.COLD) {
+            // TODO: render heart đóng băng (texture heart_freezing.png)
+        } else if (state == Temperature.State.HOT) {
+            // TODO: render heart cháy (texture heart_overheating.png)
+        } else {
+            // fallback: render vanilla heart (nếu cần)
+        }
     }
 }
