@@ -45,6 +45,10 @@ public class HyperWorldGen implements ModInitializer {
         ModBiomes.registerBiomes();
         FrostbiteHandler.register();
 
+        ModConfiguredFeatures.bootstrap(/* registry */);
+        ModPlacedFeatures.bootstrap(/* registry */);
+        ModWorldGen.generateWorldGen()
+
         HandledScreens.register(ModScreenHandlers.CRYO_FURNACE_SCREEN_HANDLER, CryoFurnaceScreen::new);
 
         SeverTickEvents.END_WORLD_TICK.register(world -> {
