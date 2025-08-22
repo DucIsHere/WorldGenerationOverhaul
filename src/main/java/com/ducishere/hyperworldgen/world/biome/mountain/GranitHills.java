@@ -16,8 +16,14 @@ public class GranitHills {
             .moodSound(BiomeMoodSound.CAVE)
             .build();
 
+        BiomeSpawnSettings.Builder spawnBuilder = new BiomeSpawnSettings.Builder();
+        // Ít mob, chủ yếu là mob sống sót trong điều kiện khắc nghiệt
+        // Tùy bạn thêm custom mob
+
+        GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+
         return new Biome.Builder()
-            .precipitation(Biome.Precipitation.RAIN) // núi mưa thường
+            .precipitation(Biome.Precipitation.NONE) // núi mưa thường
             .temperature(0.3f) // lạnh vừa
             .downfall(0.6f)   // rainfall vừa phải
             .effects(effects)
