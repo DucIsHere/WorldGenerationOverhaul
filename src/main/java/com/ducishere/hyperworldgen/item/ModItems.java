@@ -13,7 +13,6 @@ import net.minecraft.util.Identifier;
 public class ModItems {
 
     // Music / Block items
-    public static Item CRYO_LANTERN_ITEM;
     public static Item FREE_LUCK_DISC_ITEM;
 
     // Steel progression items
@@ -27,12 +26,7 @@ public class ModItems {
 
     public static void registerItems() {
 
-        // Cryo Lantern (block item)
-        CRYO_LANTERN_ITEM = Registry.register(
-                Registries.ITEM,
-                new Identifier("hyperworldgen", "cryo_lantern"),
-                new BlockItem(ModBlocks.CRYO_LANTERN, new Item.Settings().group(ItemGroup.DECORATIONS))
-        );
+        
 
         // Music disc
         FREE_LUCK_DISC_ITEM = Registry.register(
