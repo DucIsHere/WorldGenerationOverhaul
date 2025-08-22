@@ -11,17 +11,9 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    public static Block SOUL_LANTERN;
 
     public static void registerBlocks() {
-        SOUL_LANTERN = Registry.register(
-            Registries.BLOCK,
-            new Identifier("hyperworldgen", "soul_lantern"),
-            new SoulLanternBlock(FabricBlockSettings.of(net.minecraft.block.Material.GLASS)
-                .strength(1.0f)
-                .luminance(10)
-                .nonOpaque())
-        );
+        
 
         Registry.register(
             Registries.ITEM,
