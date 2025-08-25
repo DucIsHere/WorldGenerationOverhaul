@@ -1,4 +1,4 @@
-package com.ducishere.hyperworldgen.quest;
+package com.ducishere.hyperworldgen.common.quest;
 
 import dev.ftb.mods.ftblibrary.FTBLibrary;
 import dev.ftb.mods.ftbquests.api.FTBQuestsAPI;
@@ -19,7 +19,7 @@ public class QuestHandler {
             }
         });
     }
-
+    
     private static boolean playerCompletedQuest(ServerPlayer player, String questId) {
         // TODO: Thay bằng logic FTB Quests API
         return false;
