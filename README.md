@@ -9,6 +9,18 @@ Min Height 15000Block
 **Temperature&Thirst**
 **Stamina**
 **Water Pressure**
-library
-https://wiki.fabricmc.net/tutorial:chunkgenerator
-https://maven.fabricmc.net/docs/fabric-api-0.92.1+1.20.1/overview-tree.html
+**library mandatory requirement**
+
+Wiki Fabric: https://wiki.fabricmc.net/tutorial:chunkgenerator
+
+FabricMC: https://maven.fabricmc.net/docs/fabric-api-0.92.1+1.20.1/overview-tree.html
+
+FTB Quest: https://www.curseforge.com/minecraft/mc-mods/ftb-library-fabric
+
+FTB Library: https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric
+
+Patchouli: https://www.curseforge.com/minecraft/mc-mods/patchouli
+
+Archetectury: https://www.curseforge.com/minecraft/mc-mods/architectury-api
+
+Fabric API: https://modrinth.com/mod/fabric-api
