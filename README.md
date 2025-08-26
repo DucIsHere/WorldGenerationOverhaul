@@ -3,13 +3,35 @@
 Made by **DucIsHere**
 Mod have **38.675.111 challenge chain**
 Have Quest
-1500+ Biome Surface And Caves
-Max Height 25000Block 
-Min Height 15000Block
+***1500+ Biome Surface And Caves***
+**Max Height 25000Block**
+**Min Height -15000Block**
+
 **Temperature&Thirst**
 **Stamina**
 **Water Pressure**
-**library mandatory requirement**
+
+#Required Libaries
+-FTB Quest&FTB Library
+-Fabric Api
+-Patchouli
+-Architectury API
+
+#Optimize World (options)
+-Sodium
+-Lithium
+-Indium
+-Noisium
+
+#Natural More Mob(options)
+-Naturalist
+-Nature's Compass
+
+#APG&Easy Advanture 
+-LevelZ
+-Famer's Delight
+
+**Usefull Link** 👇
 
 Wiki Fabric: https://wiki.fabricmc.net/tutorial:chunkgenerator
 
