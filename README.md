@@ -1,6 +1,7 @@
 # HyperChainChallengeWorldGeneration
 
 Made by **DucIsHere**
+Developer **DucIsHere**
 
 ---
 
@@ -17,7 +18,8 @@ Made by **DucIsHere**
 - FTB Quest & FTB Library  
 - Fabric API  
 - Patchouli  
-- Architectury API  
+- Architectury API
+- ModMenu
 
 ---
 
@@ -25,7 +27,8 @@ Made by **DucIsHere**
 - Sodium  
 - Lithium  
 - Indium  
-- Noisium  
+- Noisium
+- Sodium Extraes
 
 ---
 
@@ -37,7 +40,11 @@ Made by **DucIsHere**
 
 ## RPG & Easy Adventure
 - LevelZ  
-- Farmer's Delight  
+- Farmer's Delight
+- Fabric Season
+- Delight Expanded
+- Respite's Delight
+- Vailla Refresh
 
 ---
 
