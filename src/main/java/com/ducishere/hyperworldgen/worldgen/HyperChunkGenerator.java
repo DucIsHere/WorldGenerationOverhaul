@@ -129,6 +129,63 @@ public VerticalBlockSample getColumnSample(int x, int z, HeightLimitView world, 
 
 
   @Override
+  public void generateRiver(int chunkX, int chunkZ, Chunk chunk, NoiseConfig noiseConfig) {
+    ChunkPos chunkPos = chunk.getPos();
+
+    for (int x = 0; x < 16; x++) {
+        for (int z = 0; z < 16; z++) {
+            int worldX = chunkPos.getStartX() + x;
+            int worldZ = chunkPos.getStartZ() + z;
+
+            // Lấy biome
+            var biome = chunk.getBiome(worldX, 0, worldZ);
+
+            // Nếu biome cấm → không spawn river
+            if (biome.equals(Biomes.OCEAN) || biome.equals(Biomes.DEEP_OCEAN) || 
+                biome.getKey().getValue().toString().contains("volcano") || 
+                biome.getKey().getValue().toString().contains("mountain")) {
+                continue;
+            }
+
+            int riverWidth = 15 + RANDOM.nextInt(16); // 15-30 blocks
+            int surfaceY = getHeight(worldX, worldZ, Heightmap.Type.WORLD_SURFACE, chunk, noiseConfig);
+
+            for (int dx = -riverWidth/2; dx <= riverWidth/2; dx++) {
+                for (int dz = -riverWidth/2; dz <= riverWidth/2; dz++) {
+                    int bx = worldX + dx;
+                    int bz = worldZ + dz;
+
+                    // Lấy y của block xung quanh để mượt river
+                    int by = getHeight(bx, bz, Heightmap.Type.WORLD_SURFACE, chunk, noiseConfig);
+
+                    BlockPos pos = new BlockPos(bx, by, bz);
+
+                    // Edge = bờ, middle = nước
+                    if (Math.abs(dx) == riverWidth/2 || Math.abs(dz) == riverWidth/2) {
+                        chunk.setBlockState(pos, Blocks.DIRT.getDefaultState(), false);
+                    } else {
+                        chunk.setBlockState(pos, Blocks.WATER.getDefaultState(), false);
+                    }
+                }
+            }
+
+            // Check biome tiếp theo, nếu mountain/volcano → kết thúc river mượt
+            var nextBiome = chunk.getBiome(worldX+1, 0, worldZ+1);
+            if (nextBiome.getKey().getValue().toString().contains("mountain") || 
+                nextBiome.getKey().getValue().toString().contains("volcano")) {
+                break; // river kết thúc
+            }
+
+            // Nếu gặp ocean → river kết thúc
+            if (nextBiome == Biomes.OCEAN || nextBiome == Biomes.DEEP_OCEAN) {
+                break;
+            }
+        }
+    }
+}
+
+  
+  @Override
     protected Codec<? extends ChunkGenerator> getCodec() {
       return CODEC;
     }
