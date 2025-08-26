@@ -1,48 +1,51 @@
-**HyperChainChallengeWorldGeneration**
+# HyperChainChallengeWorldGeneration
 
 Made by **DucIsHere**
-Mod have **38.675.111 challenge chain**
-Have Quest
-***1500+ Biome Surface And Caves***
-**Max Height 25000Block**
-**Min Height -15000Block**
 
-**Temperature&Thirst**
-**Stamina**
-**Water Pressure**
+---
 
-#Required Libaries
--FTB Quest&FTB Library
--Fabric Api
--Patchouli
--Architectury API
+## Features
+- **38,675,111 challenge chains**
+- **Quests included**
+- **1500+ Biomes** (Surface & Caves)
+- **Vertical Scale**: Max Height `25,000` | Min Height `-15,000`
+- **Survival Systems**: Temperature & Thirst, Stamina, Water Pressure
 
-#Optimize World (options)
--Sodium
--Lithium
--Indium
--Noisium
+---
 
-#Natural More Mob(options)
--Naturalist
--Nature's Compass
+## Required Libraries
+- FTB Quest & FTB Library  
+- Fabric API  
+- Patchouli  
+- Architectury API  
 
-#APG&Easy Advanture 
--LevelZ
--Famer's Delight
+---
 
-**Usefull Link** 👇
+## Optimize World (optional)
+- Sodium  
+- Lithium  
+- Indium  
+- Noisium  
 
-Wiki Fabric: https://wiki.fabricmc.net/tutorial:chunkgenerator
+---
 
-FabricMC: https://maven.fabricmc.net/docs/fabric-api-0.92.1+1.20.1/overview-tree.html
+## Natural More Mobs (optional)
+- Naturalist  
+- Nature's Compass  
 
-FTB Quest: https://www.curseforge.com/minecraft/mc-mods/ftb-library-fabric
+---
 
-FTB Library: https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric
+## RPG & Easy Adventure
+- LevelZ  
+- Farmer's Delight  
 
-Patchouli: https://www.curseforge.com/minecraft/mc-mods/patchouli
+---
 
-Archetectury: https://www.curseforge.com/minecraft/mc-mods/architectury-api
-
-Fabric API: https://modrinth.com/mod/fabric-api
+## Useful Links
+- [Fabric Wiki: Chunk Generator Tutorial](https://wiki.fabricmc.net/tutorial:chunkgenerator)  
+- [Fabric API Documentation](https://maven.fabricmc.net/docs/fabric-api-0.92.1+1.20.1/overview-tree.html)  
+- [FTB Quests (Fabric)](https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric)  
+- [FTB Library (Fabric)](https://www.curseforge.com/minecraft/mc-mods/ftb-library-fabric)  
+- [Patchouli](https://www.curseforge.com/minecraft/mc-mods/patchouli)  
+- [Architectury API](https://www.curseforge.com/minecraft/mc-mods/architectury-api)  
+- [Fabric API (Modrinth)](https://modrinth.com/mod/fabric-api)
