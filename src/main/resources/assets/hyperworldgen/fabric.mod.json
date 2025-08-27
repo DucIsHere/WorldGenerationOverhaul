@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "hyperworldgen",
+  "version": "0.0.1",
+
+  "name": "Hyper World Gen",
+  "description": "A crazy challenge 4billion quest 80million challenge add more 1500+ biome",
+  "authors": ["DucIsHere"],
+
+  "license": "Copyright By DucIsHere",
+  "icon": "assets/hyperworldgen/icon.png",
+
+  "environment": "*",
+
+  "entrypoints": {
+    "main": [
+      "com.example.hyperworldgen.HyperWorldGen"
+    ],
+    "client": [
+      "com.example.hyperworldgen.HyperWorldGenClient"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": ">=1.20.1",
+    "architectury": ">=9.0.8",
+    "fabric-api": "*"
+    "patchouli": "*"
+    "FTB-Library": "*"
+    "FTB-Quest": "*"
+    "ModMenu": "*"
+  }
+}
