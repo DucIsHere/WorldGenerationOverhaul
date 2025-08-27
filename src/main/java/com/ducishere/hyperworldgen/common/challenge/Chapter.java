@@ -1,6 +1,7 @@
 package com.ducishere.hyperworldgen.common.challenge;
 
 import java.util.List;
+import dev.ftb.mods.ftblibrary.FTBLibrary;
 
 public class Chapter {
     private final int chapterNumber;            // Số chương, ví dụ 1..150
