@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "hyperworldgen:steel_abyss_ore"
-  },
-  "result": "hyperworldgen:steel_abyss_scrap",
-  "experience": 90000,
-  "cookingtime": 160000
-}

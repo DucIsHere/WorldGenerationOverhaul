@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "hyperworldgen:block/cryo_furnace_on"
-  }
-}

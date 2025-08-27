@@ -1,7 +1,0 @@
-{
-  "music_disc_free_luck": {
-    "sounds": [
-      { "name": "hyperworldgen:music_disc_free_luck", "stream": true }
-    ]
-  }
-}
