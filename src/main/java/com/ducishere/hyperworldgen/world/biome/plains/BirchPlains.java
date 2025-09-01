@@ -17,7 +17,7 @@ public class BirchPlains {
         spawnSettings.spawn(SpawnSettings.SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(net.minecraft.entity.EntityType.CHICKEN, 15, 5, 7));
         spawnSettings.spawn(SpawnSettings.SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(net.minecraft.entity.EntityType.COW, 5, 7, 7));
         spawnSettings.spawn(SpawnSettings.SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(net.minecraft.entity.EntityType.CREEPER, 7, 8, 2));
-        spawnSettings.spawn(SpawnSettings.SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(net.minecraft.
+        spawnSettings.spawn(SpawnSettings.SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(net.minecraft.entity.EntityType.SPIDER, 75, 9, 5));
 
         // 2. Thêm terrain & feature generation
         GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
