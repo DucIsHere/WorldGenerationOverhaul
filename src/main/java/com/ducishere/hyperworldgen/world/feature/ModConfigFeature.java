@@ -22,6 +22,21 @@ public class ModConfiguredFeatures {
         ));
     }
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_RICE = ResourceKey.create(Registries.CONFIGURED_FEATURE,
+            new ResourceLocation("hyperworldgen", "wild_rice"));
+
+    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+        FeatureUtils.simplePatchConfiguaration(
+            Feature.SIMPLE_BLOCK,
+            new SimpleBlockConfiguaration(BlockStateProvider.simple(
+                ForgeRegisties.BLOCK.getValue(
+                    new ResourceLocation("famersdelight", "wild_rice"))))),
+            List.of(), 32
+                )
+            ))
+        )
+    }
+
     private static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier("hyperworldgen", name));
     }
