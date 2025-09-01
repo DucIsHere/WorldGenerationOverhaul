@@ -5,36 +5,45 @@ import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
-import net.minecraft.world.gen.feature.SingleStateFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
+import net.minecraft.world.gen.feature.SimpleBlockFeatureConfig;
+import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
+import net.minecraft.world.gen.placementmodifier.PlacementModifier;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 public class ModConfiguredFeatures {
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> SNOW_LAYER_8 = registerKey("snow_layer_8");
+    // key cho wild rice
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_RICE =
+            registerKey("wild_rice");
+
+    // key cho snow layer 8 (ví dụ)
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SNOW_LAYER_8 =
+            registerKey("snow_layer_8");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
-        // Feature tuyết dày
-        context.register(SNOW_LAYER_8, new ConfiguredFeature<>(
-                Feature.BLOCK_COLUMN,
-                new SingleStateFeatureConfig(Blocks.SNOW_BLOCK.getDefaultState())
-        ));
-    }
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_RICE = ResourceKey.create(Registries.CONFIGURED_FEATURE,
-            new ResourceLocation("hyperworldgen", "wild_rice"));
-
-    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
-        FeatureUtils.simplePatchConfiguaration(
-            Feature.SIMPLE_BLOCK,
-            new SimpleBlockConfiguaration(BlockStateProvider.simple(
-                ForgeRegisties.BLOCK.getValue(
-                    new ResourceLocation("famersdelight", "wild_rice"))))),
-            List.of(), 32
+        // Wild Rice (dùng farmersdelight:wild_rice block)
+        context.register(WILD_RICE, new ConfiguredFeature<>(
+                Feature.RANDOM_PATCH,
+                new RandomPatchFeatureConfig(
+                        32, // tries per chunk
+                        6,  // spread xz
+                        2,  // spread y
+                        () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
+                                BlockStateProvider.of(
+                                        net.minecraft.block.BlocksRegistry.WILD_RICE // nếu Farmers Delight đăng ký block này
+                                )
+                        ))
                 )
-            ))
-        )
+        ));
+
+        // Snow Layer 8 (ví dụ)
+        context.register(SNOW_LAYER_8, new ConfiguredFeature<>(
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SNOW))
+        ));
     }
 
     private static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
