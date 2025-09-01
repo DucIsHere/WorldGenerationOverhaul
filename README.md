@@ -1,4 +1,4 @@
-# HyperChainChallengeWorldGeneration
+# World Generation Overhaul
 
 Made by **DucIsHere**
 Developer **DucIsHere**
@@ -6,8 +6,6 @@ Developer **DucIsHere**
 ---
 
 ## Features
-- **38,675,111 challenge chains**
-- **Quests included**
 - **1500+ Biomes** (Surface & Caves)
 - **Vertical Scale**: Max Height `25,000` | Min Height `-15,000`
 - **Survival Systems**: Temperature & Thirst, Stamina, Water Pressure
