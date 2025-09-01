@@ -35,7 +35,7 @@ public ExampleChunkGenerator(int maxHeight, int minHeight) {
 
   @Override
      public int seaLevel() {
-       return 500;
+       return 75;
   }
 
   @Override
