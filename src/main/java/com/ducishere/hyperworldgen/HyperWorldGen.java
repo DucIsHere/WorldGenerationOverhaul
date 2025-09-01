@@ -6,8 +6,8 @@ import com.ducishere.hyperworldgen.item.ModItems;
 import com.ducishere.hyperworldgen.world.feature.ModConfiguredFeatures;
 import com.ducishere.hyperworldgen.world.feature.ModPlacedFeatures;
 import com.ducishere.hyperworldgen.handler.FrostbiteHandler;
-import net.fabricmc.fabric.api.event.lifecycle.v1.SeverTickEvents;
-import net.minecraft.sever.world.ServerWorld;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.server.world.ServerWorld;
 import com.ducishere.hyperworldgen.environment.ColdEnvironment;
 
 import net.fabricmc.api.ModInitializer;
@@ -20,10 +20,8 @@ public class HyperWorldGen implements ModInitializer {
     public void onInitialize() {
         System.out.println("Initializing HyperWorldGen...");
 
-        
         ModBlocks.registerBlocks();
 
-        
         ModItems.registerItems();
         SteelIngot.register();
         SteelReinforcedIngot.register();
@@ -32,28 +30,28 @@ public class HyperWorldGen implements ModInitializer {
         IceSteelReinforcedIngot.register();
         SteelArmorUpgrade.register();
 
-        ModRepices.registerRepices();
+        ModRecipes.registerRecipes();
 
-
-        
         ModEffects.registerModEffects();
 
-        
         ModConfiguredFeatures.bootstrap();
         ModPlacedFeatures.bootstrap();
 
         ModBiomes.registerBiomes();
         FrostbiteHandler.register();
 
-        ModConfiguredFeatures.bootstrap(/* registry */);
-        ModPlacedFeatures.bootstrap(/* registry */);
-        ModWorldGen.generateWorldGen()
+        // Nếu cần truyền registry, truyền đúng args
+        // ModConfiguredFeatures.bootstrap(registry);
+        // ModPlacedFeatures.bootstrap(registry);
+
+        ModWorldGen.generateWorldGen();
 
         HandledScreens.register(ModScreenHandlers.CRYO_FURNACE_SCREEN_HANDLER, CryoFurnaceScreen::new);
 
-        SeverTickEvents.END_WORLD_TICK.register(world -> {
+        ServerTickEvents.END_WORLD_TICK.register(world -> {
             if(world instanceof ServerWorld serverWorld){
                 ColdEnvironment.tick(serverWorld);
-        }
+            }
+        });
     }
 }
