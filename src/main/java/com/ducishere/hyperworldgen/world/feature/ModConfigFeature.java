@@ -15,6 +15,9 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 public class ModConfiguredFeatures {
 
+    public static final RegistryKey<ConfiguaredFeature<?, ?>> WILD_TEA_BUSH =
+            registerKey("wild_tea_bush")(
+
     // key cho wild rice
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_RICE =
             registerKey("wild_rice");
@@ -36,6 +39,20 @@ public class ModConfiguredFeatures {
                                         net.minecraft.block.BlocksRegistry.WILD_RICE // nếu Farmers Delight đăng ký block này
                                 )
                         ))
+                )
+        ));
+
+        context.register(WILD_TEA_BUSH, new ConfiguaredFeature<>(
+                Feature.RANDOM_PATCH,
+                new RandomPatchFeatureConfig(
+                    32,
+                    6,
+                    2,
+                    () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
+                            BlockStateProvider.of(
+                                    net.minecraft.block.BlockRegistry.WILD_TEA_BUSH
+                            )
+                    ))
                 )
         ));
 
