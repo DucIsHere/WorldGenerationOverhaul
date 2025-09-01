@@ -30,5 +30,6 @@
     "FTB-Library": "*"
     "FTB-Quest": "*"
     "ModMenu": "*"
+    "famer's delight": ">=1.2.0"
   }
 }
