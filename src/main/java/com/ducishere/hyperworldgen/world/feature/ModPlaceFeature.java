@@ -28,6 +28,22 @@ public class ModPlacedFeatures {
         ));
     }
 
+    public static final ResourceKey<PlacedFeature> WILD_RICE_PLACED =
+    ResourceKey.create(Registries.PLACED_FEATURE,
+        new ResourceLocation("yourmodid", "wild_rice_placed"));
+
+public static void bootstrap(BootstapContext<PlacedFeature> context) {
+    Holder<ConfiguredFeature<?, ?>> wildRice = context.lookup(Registries.CONFIGURED_FEATURE)
+        .getOrThrow(ModConfiguredFeatures.WILD_RICE);
+
+    PlacementUtils.register(context, WILD_RICE_PLACED, wildRice,
+        CountPlacement.of(10),
+        InSquarePlacement.spread(),
+        PlacementUtils.HEIGHTMAP,
+        BiomeFilter.biome());
+}
+
+
     private static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier("hyperworldgen", name));
     }
