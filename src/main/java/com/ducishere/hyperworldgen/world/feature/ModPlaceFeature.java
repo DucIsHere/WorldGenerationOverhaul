@@ -1,50 +1,52 @@
 package com.ducishere.hyperworldgen.world.feature;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
-import net.minecraft.world.gen.placementmodifier.InSquarePlacementModifier;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
+import net.minecraft.world.gen.feature.SimpleBlockFeatureConfig;
+import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
-import net.minecraft.world.gen.placementmodifier.PlacementModifierType;
-import net.minecraft.world.gen.placementmodifier.HeightmapPlacementModifier;
-import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
-import java.util.List;
+public class ModConfiguredFeatures {
 
-public class ModPlacedFeatures {
+    // key cho wild rice
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_RICE =
+            registerKey("wild_rice");
 
-    public static final RegistryKey<PlacedFeature> SNOW_LAYER_8_PLACED = registerKey("snow_layer_8_placed");
+    // key cho snow layer 8 (ví dụ)
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SNOW_LAYER_8 =
+            registerKey("snow_layer_8");
 
-    public static void bootstrap(Registerable<PlacedFeature> context) {
-        context.register(SNOW_LAYER_8_PLACED, new PlacedFeature(
-                context.getHolderOrThrow(ModConfiguredFeatures.SNOW_LAYER_8),
-                List.of(
-                        CountPlacementModifier.of(8), // số lần spawn
-                        InSquarePlacementModifier.spread(),
-                        HeightmapPlacementModifier.of()
+    public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
+        // Wild Rice (dùng farmersdelight:wild_rice block)
+        context.register(WILD_RICE, new ConfiguredFeature<>(
+                Feature.RANDOM_PATCH,
+                new RandomPatchFeatureConfig(
+                        32, // tries per chunk
+                        6,  // spread xz
+                        2,  // spread y
+                        () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
+                                BlockStateProvider.of(
+                                        net.minecraft.block.BlocksRegistry.WILD_RICE // nếu Farmers Delight đăng ký block này
+                                )
+                        ))
                 )
+        ));
+
+        // Snow Layer 8 (ví dụ)
+        context.register(SNOW_LAYER_8, new ConfiguredFeature<>(
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SNOW))
         ));
     }
 
-    public static final ResourceKey<PlacedFeature> WILD_RICE_PLACED =
-    ResourceKey.create(Registries.PLACED_FEATURE,
-        new ResourceLocation("yourmodid", "wild_rice_placed"));
-
-public static void bootstrap(BootstapContext<PlacedFeature> context) {
-    Holder<ConfiguredFeature<?, ?>> wildRice = context.lookup(Registries.CONFIGURED_FEATURE)
-        .getOrThrow(ModConfiguredFeatures.WILD_RICE);
-
-    PlacementUtils.register(context, WILD_RICE_PLACED, wildRice,
-        CountPlacement.of(10),
-        InSquarePlacement.spread(),
-        PlacementUtils.HEIGHTMAP,
-        BiomeFilter.biome());
-}
-
-
-    private static RegistryKey<PlacedFeature> registerKey(String name) {
-        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier("hyperworldgen", name));
+    private static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
+        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier("hyperworldgen", name));
     }
 }
