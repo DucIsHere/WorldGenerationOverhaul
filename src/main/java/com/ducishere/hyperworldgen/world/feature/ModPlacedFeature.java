@@ -37,6 +37,15 @@ public class ModPlacedFeatures {
                         // Nếu có BiomeFilter.biome() thì thêm vào, còn không có thì có thể bỏ qua!
                 )
         ));
+
+        context.register(WILD_TEA_BUSH, new PlacedFeature(
+                context.hetHolderOrThrow(ModConfiguredFeature.WILD_TEA_BUSH),
+                List.of(
+                       CountPlacementModifier.of(10),
+                        InSquarePlacementModifier.spread(),
+                        HeightmapPlacementModifier.of()
+                )
+        ));
     }
 
     private static RegistryKey<PlacedFeature> registerKey(String name) {
