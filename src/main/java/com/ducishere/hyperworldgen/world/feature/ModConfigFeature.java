@@ -26,6 +26,9 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> SNOW_LAYER_8 =
             registerKey("snow_layer_8");
 
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_CARROTS =
+            registryKey(wild_carrots);
+
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         // Wild Rice (dùng farmersdelight:wild_rice block)
         context.register(WILD_RICE, new ConfiguredFeature<>(
@@ -55,6 +58,36 @@ public class ModConfiguredFeatures {
                     ))
                 )
         ));
+
+        context.register(WIlD_CARROTS, new ConfiguredFeature<>(
+                Feature.RANDOM_PATCH,
+                new RandomPatchFeatureConfig(
+                    64,
+                    8,
+                    2,
+                    () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
+                            BlockStateProvider.of(
+                                net.minecraft.block.BlockRegistry.WILD_CARROTS
+                            )
+                    ))
+                )
+        ));
+
+        context.register(WIlD_POTATOES, new ConfiguredFeature<>(
+                Feature.RANDOM_PATCH,
+                new RandomPatchFeatureConfig(
+                    64,
+                    8,
+                    2,
+                    () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
+                            BlockStateProvider.of(
+                                net.minecraft.block.BlockRegistry.WILD_POTATOES
+                            )
+                    ))
+                )
+        ));
+
+        
 
         // Snow Layer 8 (ví dụ)
         context.register(SNOW_LAYER_8, new ConfiguredFeature<>(
