@@ -1,133 +1,124 @@
 package com.ducishere.hyperworldgen.world.noise;
 
-import com.github.yellowstonegames.fastnoise.FastNoiseLite;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
+import com.github.lunatrius.core.noise.FastNoiseLite;
 
-public class AllBiomesNoise {
-    private FastNoiseLite biomeNoise, heightNoise, terraceNoise, warpNoise, ridgeNoise;
-    private Random random;
-    private Map<String,String[]> biomeBlocks = new HashMap<>();
-    private Map<Long,Double> heightCache = new HashMap<>(); // chunk-based cache
+public class AllBiomesNoiseProFull {
 
-    public AllBiomesNoise(long seed){
-        biomeNoise = new FastNoiseLite((int)seed);
-        heightNoise = new FastNoiseLite((int)(seed+1));
-        terraceNoise = new FastNoiseLite((int)(seed+2));
-        warpNoise = new FastNoiseLite((int)(seed+3));
-        ridgeNoise = new FastNoiseLite((int)(seed+4));
-        random = new Random(seed);
+    private final FastNoiseLite biomeNoise, heightNoise, terraceNoise, warpNoise, ridgeNoise;
 
-        // Configure noise types
-        biomeNoise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
-        heightNoise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2S);
-        warpNoise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
-        ridgeNoise.SetNoiseType(FastNoiseLite.NoiseType.RidgedMulti);
+    private final double seaLevel = 75;
+    private final double oceanFloor = -7500;
 
-        // Blocks palette
-        biomeBlocks.put("MeadowPlains", new String[]{"GRASS_BLOCK","DIRT"});
-        biomeBlocks.put("BoneCrest", new String[]{"TERRACOTTA","RED_SAND"});
-        biomeBlocks.put("BasaltFotress", new String[]{"BASALT","MAGMA_BLOCK"});
-        biomeBlocks.put("BlizzardHells", new String[]{"SNOW_BLOCK","ICE"});
-        biomeBlocks.put("ThunderHills", new String[]{"GRASS_BLOCK","STONE"});
-        biomeBlocks.put("RiceTropical", new String[]{"RICE_CROP","WATER","DIRT"});
-        biomeBlocks.put("TeaField", new String[]{"GRASS_BLOCK","DIRT","TEA_BUSH"});
+    private static class BiomeHeight {
+        double min, avg, max;
+        BiomeHeight(double min, double avg, double max) {
+            this.min = min;
+            this.avg = avg;
+            this.max = max;
+        }
     }
 
-    // --------------------- Biome selection with domain warp ---------------------
-    public String getBiome(double x,double z){
-        float warpX = x + warpNoise.GetNoise((float)(x/1000),(float)(z/1000)) * 1000;
-        float warpZ = z + warpNoise.GetNoise((float)(x/1000+100),(float)(z/1000+100)) * 1000;
-        float n = biomeNoise.GetNoise(warpX/50000,0,warpZ/50000);
+    private final Map<String, BiomeHeight> biomeHeights = new HashMap<>();
+    private final Map<String, Double> biomeThresholds = new HashMap<>();
+    private final Map<String, String[]> biomeBlocks = new HashMap<>();
 
-        if(n<-0.6) return "AbyssOceanBiome";
-        if(n<-0.3) return "RiceTropical";
-        if(n<0) return "TeaField";
-        if(n<0.2) return "MeadowPlains";
-        if(n<0.4) return "BoneCrest";
-        if(n<0.6) return "BlizzardHell";
-        if(n<0.8) return "ThunderHills";
+    public AllBiomesNoiseProFull(long seed) {
+        // ----- Noise setup -----
+        biomeNoise = new FastNoiseLite((int) seed);
+        biomeNoise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
+        biomeNoise.SetFrequency(0.01f);
+
+        heightNoise = new FastNoiseLite((int) (seed + 1));
+        heightNoise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2S);
+        heightNoise.SetFrequency(0.02f);
+
+        terraceNoise = new FastNoiseLite((int) (seed + 2));
+        terraceNoise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
+        terraceNoise.SetFrequency(0.05f);
+
+        warpNoise = new FastNoiseLite((int) (seed + 3));
+        warpNoise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
+        warpNoise.SetFrequency(0.005f);
+
+        ridgeNoise = new FastNoiseLite((int) (seed + 4));
+        ridgeNoise.SetNoiseType(FastNoiseLite.NoiseType.RidgedMulti);
+        ridgeNoise.SetFrequency(0.02f);
+
+        // ----- Biome thresholds -----
+        biomeThresholds.put("AbyssOceanBiome", -0.6);
+        biomeThresholds.put("RiceTropical", -0.3);
+        biomeThresholds.put("TeaField", 0.0);
+        biomeThresholds.put("MeadowPlains", 0.2);
+        biomeThresholds.put("BoneCrest", 0.4);
+        biomeThresholds.put("BlizzardHell", 0.6);
+        biomeThresholds.put("ThunderHills", 0.8);
+        biomeThresholds.put("Volcano", 1.0);
+
+        // ----- Biome block palettes -----
+        biomeBlocks.put("AbyssOceanBiome", new String[]{"WATER", "SAND"});
+        biomeBlocks.put("RiceTropical", new String[]{"RICE_CROP", "WATER", "DIRT"});
+        biomeBlocks.put("TeaField", new String[]{"GRASS_BLOCK", "DIRT", "TEA_BUSH"});
+        biomeBlocks.put("MeadowPlains", new String[]{"GRASS_BLOCK", "DIRT"});
+        biomeBlocks.put("BoneCrest", new String[]{"TERRACOTTA", "RED_SAND"});
+        biomeBlocks.put("BlizzardHell", new String[]{"SNOW_BLOCK", "ICE"});
+        biomeBlocks.put("ThunderHills", new String[]{"GRASS_BLOCK", "STONE"});
+        biomeBlocks.put("Volcano", new String[]{"BASALT", "MAGMA_BLOCK"});
+
+        // ----- Biome heights (min/avg/max) -----
+        biomeHeights.put("AbyssOceanBiome", new BiomeHeight(oceanFloor, (oceanFloor + seaLevel) / 2, seaLevel));
+        biomeHeights.put("RiceTropical", new BiomeHeight(76, 150, 355));
+        biomeHeights.put("TeaField", new BiomeHeight(76, 130, 250));
+        biomeHeights.put("MeadowPlains", new BiomeHeight(75, 89, 120));
+        biomeHeights.put("BoneCrest", new BiomeHeight(78, 579, 979));
+        biomeHeights.put("BlizzardHell", new BiomeHeight(457, 638, 2803));
+        biomeHeights.put("ThunderHills", new BiomeHeight(1500, 2560, 5300));
+        biomeHeights.put("Volcano", new BiomeHeight(250, 750, 3000));
+    }
+
+    // ----- Get biome -----
+    public String getBiome(double x, double z) {
+        double n = biomeNoise.GetNoise((float)x, (float)z) + warpNoise.GetNoise((float)x, (float)z) * 0.5;
+        for (Map.Entry<String, Double> entry : biomeThresholds.entrySet()) {
+            if (n < entry.getValue()) return entry.getKey();
+        }
         return "Volcano";
     }
 
-    // --------------------- Height map with ridge/fBM hybrid + terrace ---------------------
-    public double getHeight(double x,double z){
-        long chunkKey = ((long)(x/16)<<32)|((long)(z/16)&0xFFFFFFFFL);
-        if(heightCache.containsKey(chunkKey)) return heightCache.get(chunkKey);
+    // ----- Get height -----
+    public double getHeight(double x, double z, String biome) {
+        BiomeHeight h = biomeHeights.getOrDefault(biome, new BiomeHeight(seaLevel, seaLevel+5, seaLevel+10));
 
-        String biome = getBiome(x,z);
-        double base = 75;
-        double n = heightNoise.GetNoise((float)(x/200),0,(float)(z/200));
-        double ridge = ridgeNoise.GetNoise((float)(x/100),(float)(z/100));
+        double noiseValue = heightNoise.GetNoise((float)x, (float)z); // -1 → 1
+        double ridgeEffect = ridgeNoise.GetNoise((float)x, (float)z);
+        double terraceEffect = terraceNoise.GetNoise((float)x, (float)z);
 
-        double height = base;
-        switch(biome){
-            case "RiceTropical":
-                double step = terraceNoise.GetNoise((float)(x/50),(float)(z/50),0);
-                height = base + Math.floor(step*5)*10 + n*20;
-                break;
-            case "TeaField":
-                height = base + n*150;
-                break;
-            case "Plains":
-                height = base + n*50;
-                break;
-            case "Mesa":
-                height = 500 + ridge*500 + n*200;
-                break;
-            case "Volcano":
-                height = 3500 + ridge*15000 + n*1500;
-                break;
-            case "SnowMountain":
-                height = 5000 + ridge*12500 + n*5000;
-                break;
-            case "ThunderHills":
-                height = 150 + ridge*100 + n*50;
-                break;
-            default: height = base;
-        }
+        double range = h.max - h.min;
+        double rawHeight = h.avg + noiseValue * (range / 2) + ridgeEffect + terraceEffect;
 
-        heightCache.put(chunkKey,height);
-        return height;
+        // Clamp với min/max
+        if (rawHeight < h.min) rawHeight = h.min;
+        if (rawHeight > h.max) rawHeight = h.max;
+
+        return rawHeight;
     }
 
-    // --------------------- River / Canal system ---------------------
-    public void generateRiver(double x,double z,String biome){
-        // slope ≤2
-        // RiceTropical: canals connecting paddies
-        // TeaField: irrigation channels
+    // ----- Get block palette -----
+    public String[] getBlocks(String biome) {
+        return biomeBlocks.getOrDefault(biome, new String[]{"STONE"});
     }
 
-    // --------------------- Vegetation ---------------------
-    public void generateVegetation(double x,double y,double z,String biome){
-        switch(biome){
-            case "RiceTropical":
-                // spawn rice crops + sparse palms
-                break;
-            case "TeaField":
-                // spawn tea bushes + small trees
-                break;
-            case "Plains":
-                // grass + trees
-                break;
-            case "Mesa":
-                // cacti + sparse shrubs
-                break;
-            case "SnowMountain":
-                // snow + pine trees
-                break;
-        }
+    // ----- Optional: update thresholds or blocks dynamically -----
+    public void setBiomeThreshold(String biome, double threshold) {
+        biomeThresholds.put(biome, threshold);
     }
 
-    // --------------------- Volcano ---------------------
-    public void generateVolcano(double x,double z,String biome){
-        if(!biome.equals("Volcano")) return;
-        // magma rift 1–2 blocks, basalt ring
+    public void setBlockPalette(String biome, String[] blocks) {
+        biomeBlocks.put(biome, blocks);
     }
 
-    // --------------------- Get block palette ---------------------
-    public String[] getBlocks(String biome){
-        return biomeBlocks.getOrDefault(biome,new String[]{"STONE"});
+    public void setBiomeHeight(String biome, double min, double avg, double max) {
+        biomeHeights.put(biome, new BiomeHeight(min, avg, max));
     }
 }
