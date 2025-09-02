@@ -26,10 +26,10 @@ public class AllBiomesNoise {
         ridgeNoise.SetNoiseType(FastNoiseLite.NoiseType.RidgedMulti);
 
         // Blocks palette
-        biomeBlocks.put("Plains", new String[]{"GRASS_BLOCK","DIRT"});
-        biomeBlocks.put("Mesa", new String[]{"TERRACOTTA","RED_SAND"});
-        biomeBlocks.put("Volcano", new String[]{"BASALT","MAGMA_BLOCK"});
-        biomeBlocks.put("SnowMountain", new String[]{"SNOW_BLOCK","ICE"});
+        biomeBlocks.put("MeadowPlains", new String[]{"GRASS_BLOCK","DIRT"});
+        biomeBlocks.put("BoneCrest", new String[]{"TERRACOTTA","RED_SAND"});
+        biomeBlocks.put("BasaltFotress", new String[]{"BASALT","MAGMA_BLOCK"});
+        biomeBlocks.put("BlizzardHells", new String[]{"SNOW_BLOCK","ICE"});
         biomeBlocks.put("ThunderHills", new String[]{"GRASS_BLOCK","STONE"});
         biomeBlocks.put("RiceTropical", new String[]{"RICE_CROP","WATER","DIRT"});
         biomeBlocks.put("TeaField", new String[]{"GRASS_BLOCK","DIRT","TEA_BUSH"});
@@ -41,12 +41,12 @@ public class AllBiomesNoise {
         float warpZ = z + warpNoise.GetNoise((float)(x/1000+100),(float)(z/1000+100)) * 1000;
         float n = biomeNoise.GetNoise(warpX/50000,0,warpZ/50000);
 
-        if(n<-0.6) return "Ocean";
+        if(n<-0.6) return "AbyssOceanBiome";
         if(n<-0.3) return "RiceTropical";
         if(n<0) return "TeaField";
-        if(n<0.2) return "Plains";
-        if(n<0.4) return "Mesa";
-        if(n<0.6) return "SnowMountain";
+        if(n<0.2) return "MeadowPlains";
+        if(n<0.4) return "BoneCrest";
+        if(n<0.6) return "BlizzardHell";
         if(n<0.8) return "ThunderHills";
         return "Volcano";
     }
