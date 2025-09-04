@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "lit=true": { "model": "hyperworldgen:block/cryo_furnace_on" },
-    "lit=false": { "model": "hyperworldgen:block/cryo_furnace_off" }
-  }
-}
