@@ -20,17 +20,6 @@ public class HyperWorldGen implements ModInitializer {
     public void onInitialize() {
         System.out.println("Initializing HyperWorldGen...");
 
-        ModBlocks.registerBlocks();
-
-        ModItems.registerItems();
-        SteelIngot.register();
-        SteelReinforcedIngot.register();
-        SteelAbyssIngot.register();
-        GlacialIceShard.register();
-        IceSteelReinforcedIngot.register();
-        SteelArmorUpgrade.register();
-
-        ModRecipes.registerRecipes();
 
         ModEffects.registerModEffects();
 
