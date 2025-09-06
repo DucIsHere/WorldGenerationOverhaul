@@ -351,6 +351,7 @@ ModPlacedFeatures → đặt Feature đó vào thế giới với rule spawn.
 
 
 Đây là tài liệu được viết lại, vẫn sẽ có sai sót xin thông cảm
-**By Wandering**
+
+Người viết**Wandering**
 
 © 2025 DucIsHere.
