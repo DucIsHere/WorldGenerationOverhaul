@@ -6,7 +6,7 @@ Developer **DucIsHere**
 ---
 
 ## Features
-- **1500+ Biomes** (Surface & Caves)
+- **150+ Biomes** (Surface & Caves)
 - **Vertical Scale**: Max Height `25,000` | Min Height `-15,000`
 - **Survival Systems**: Temperature & Thirst, Stamina, Water Pressure
 
@@ -48,7 +48,8 @@ Developer **DucIsHere**
 
 ## Useful Links
 - [Fabric Wiki: Chunk Generator Tutorial](https://wiki.fabricmc.net/tutorial:chunkgenerator)  
-- [Fabric API Documentation](https://maven.fabricmc.net/docs/fabric-api-0.92.1+1.20.1/overview-tree.html)  
+- [Fabric API Documentation](https://maven.fabricmc.net/docs/fabric-api-0.92.1+1.20.1/overview-tree.html)
+- [Minecraft Wiki Documentation](https://minecraft.wiki/w/Noise_settings)
 - [FTB Quests (Fabric)](https://www.curseforge.com/minecraft/mc-mods/ftb-quests-fabric)  
 - [FTB Library (Fabric)](https://www.curseforge.com/minecraft/mc-mods/ftb-library-fabric)  
 - [Patchouli](https://www.curseforge.com/minecraft/mc-mods/patchouli)  
