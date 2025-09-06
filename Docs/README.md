@@ -3,7 +3,7 @@
 
 **HyperGenWorld** là một dự án Minecraft worldgen overhaul quy mô lớn, được phát triển trên Fabric.
 - Độ cao thế giới: từ **-25,000** đến **+25,000** block.
-- Biome rộng: trung bình **20–30 chunk** (~320–480 block).
+- Biome rộng: trung bình **200–300 chunk** (~51200–76800 block).
 - Hệ thống **MultiNoiseBiomeSource** tùy chỉnh, sử dụng **FastNoiseLite**.
 - Hỗ trợ **700+ biome** với các cơ chế đặc biệt (BlizzardHell, EverestSummit, EchoingTundra...).
 
