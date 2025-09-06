@@ -96,5 +96,96 @@ Render layer custom
 
 ---
 
+##3. ModBiomes.java
+
+**Mục đích**:
+Quản lý và đăng ký các biome custom vào hệ thống Minecraft Registry.
+
+**Code Snippet**:
+
+```java
+package com.ducishere.hyperworldgen.world.biome;
+
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.level.biome.Biome;
+
+public class ModBiomes {
+    public static Biome BLIZZARD_HELL;
+
+    public static void registerBiomes() {
+        BLIZZARD_HELL = Registry.register(
+                Registries.BIOME,
+                new Identifier("hyperworldgen", "blizzard_hell"),
+                BlizzardHellBiome.createBiome()
+        );
+
+        System.out.println("Biomes registered");
+    }
+}
+```
+
+**Giải thích**:
+public static Biome BLIZZARD_HELL;
+Khai báo một biến tĩnh để lưu biome tùy chỉnh.
+registerBiomes()
+Hàm này dùng để đăng ký tất cả biome custom vào Minecraft Registry.
+Registry.register(...):
+Registries.BIOME → loại registry là biome.
+new Identifier("hyperworldgen", "blizzard_hell") → tên định danh: hyperworldgen:blizzard_hell.
+BlizzardHellBiome.createBiome() → gọi hàm tạo biome từ class khác (BlizzardHellBiome).
+Sau khi đăng ký, in ra "Biomes registered" trong console để debug.
+
+**Mối liên kết**:
+Liên kết với class BlizzardHellBiome.java → nơi định nghĩa chi tiết biome (climate, mob spawn, feature...).
+Được gọi từ HyperWorldGen.onInitialize() để đảm bảo biome được load khi game khởi động.
+
+---
+
+##4. **ModSounds.java**
+
+**Mục đích**:
+Quản lý và đăng ký âm thanh tùy chỉnh (Sound Events) vào registry của Minecraft.
+
+**Code Snippet**:
+
+```java
+package com.ducishere.hyperworldgen.sound;
+
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.Identifier;
+
+public class ModSounds {
+    public static SoundEvent FREE_LUCK_DISC;
+
+    public static void registerSounds() {
+        FREE_LUCK_DISC = Registry.register(
+            Registries.SOUND_EVENT,
+            new Identifier("hyperworldgen", "music_disc_free_luck"),
+            new SoundEvent(new Identifier("hyperworldgen", "music_disc_free_luck"))
+        );
+        System.out.println("Sounds registered");
+    }
+}
+```
+
+**Giải thích**:
+
+public static SoundEvent FREE_LUCK_DISC;
+Khai báo một SoundEvent đại diện cho bản nhạc custom (music_disc_free_luck).
+registerSounds()
+Đăng ký FREE_LUCK_DISC vào Registries.SOUND_EVENT.
+Sử dụng new Identifier("hyperworldgen", "music_disc_free_luck") → ID đầy đủ là hyperworldgen:music_disc_free_luck.
+Sau khi đăng ký, in ra "Sounds registered" trong console.
+Mối liên kết:
+Sound này sẽ được gọi từ item music disc trong game.
+File resources/assets/hyperworldgen/sounds.json cần định nghĩa sound để game nhận diện.
+File .ogg thực tế phải nằm trong resources/assets/hyperworldgen/sounds/.
+
+---
+
 
 
