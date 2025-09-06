@@ -8,7 +8,7 @@ Tài liệu này giải thích các class chính trong dự án, mục đích v�
 
 **Code Snippet**:
 
-```
+```java
 public class HyperWorldGen implements ModInitializer {
 
     public static final String MOD_ID = "hyperworldgen";
@@ -28,8 +28,7 @@ public class HyperWorldGen implements ModInitializer {
         ModWorldGen.generateWorldGen();
 
         HandledScreens.register(
-            ModScreenHandlers.CRYO_FURNACE_SCREEN_HANDLER,
-            CryoFurnaceScreen::new
+            
         );
 
         ServerTickEvents.END_WORLD_TICK.register(world -> {
@@ -39,19 +38,19 @@ public class HyperWorldGen implements ModInitializer {
         });
     }
 }
+```
 
-Giải thích:
+**Giải thích**:
 MOD_ID = "hyperworldgen" → định danh mod.
 onInitialize() là entrypoint được gọi khi mod load:
-Đăng ký Effect: ModEffects.registerModEffects()
-Đăng ký Worldgen Features:
+**Đăng ký Effect**: ModEffects.registerModEffects()
+**Đăng ký Worldgen Features**:
 ModConfiguredFeatures.bootstrap() → chuẩn bị feature config
 ModPlacedFeatures.bootstrap() → chuẩn bị placement rule
 Đăng ký Biomes: ModBiomes.registerBiomes()
 Handler gameplay: FrostbiteHandler.register() → xử lý cơ chế Frostbite
 WorldGen: ModWorldGen.generateWorldGen() → khởi tạo cấu hình worldgen
-Screen: đăng ký GUI cho block entity CryoFurnaceScreen
-Server Tick Event: mỗi tick của thế giới gọi ColdEnvironment.tick() để cập nhật môi trường lạnh.
+Screen: đăng ký GUI 
 Mối liên kết:
 Kết nối tất cả hệ thống (biomes, features, effects, handlers) vào vòng đời của Fabric.
 Là “cửa chính” load toàn bộ các module khác.
