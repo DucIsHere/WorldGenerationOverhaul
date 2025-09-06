@@ -112,7 +112,7 @@ This file contains internal notes and TODOs for ongoing development.
 ---
 
 ## 📌 TODO
-- [ ] Add **VolcanoBiome**
+- [x] Add **VolcanoBiome**
 - [ ] Optimize chunk generator performance
 - [ ] Port to **Quilt Loader**
 - [ ] Configurable biome size via JSON
