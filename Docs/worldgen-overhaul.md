@@ -176,3 +176,5 @@ public class FastNoiseLiteBackend {
 - **Dimension JSON:** mở rộng thế giới.  
 
 Tài liệu này là nền tảng để phát triển **HyperGenWorld Overhaul**.
+
+**Tất cả các code trong này đều là tham khảo. Những đoạn code này đã được thay đổi ở tại các thư mục của bản mod. Hãy lưu ý khi tham khảo**•
