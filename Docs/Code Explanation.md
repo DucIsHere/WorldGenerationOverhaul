@@ -187,5 +187,160 @@ File .ogg thực tế phải nằm trong resources/assets/hyperworldgen/sounds/.
 
 ---
 
+##5. **HyperChunkGenerator**
+
+**Mục đích**:
+
+Định nghĩa chunk generator tùy chỉnh cho thế giới HyperWorldGen, mở rộng giới hạn build height và áp dụng cơ chế noise riêng.
+
+**Code Key Points** :
+
+```java
+public class HyperChunkGenerator extends ChunkGenerator {
+    public static final Codec<HyperChunkGenerator> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+        Codec.INT.fieldOf("maxHeight").forGetter(cg -> cg.maxHeight),
+        Codec.INT.fieldOf("minHeight").forGetter(cg -> cg.minHeight)
+    ).apply(instance, HyperChunkGenerator::new));
+
+    private final int maxHeight;
+    private final int minHeight;
+
+    public HyperChunkGenerator(int maxHeight, int minHeight) {
+        this.maxHeight = maxHeight;
+        this.minHeight = minHeight;
+    }
+
+    @Override
+    public int getWorldHeight() { return 50000; }
+
+    @Override
+    public int getMinimumY() { return -25000; }
+
+    @Override
+    public int seaLevel() { return 75; }
+}
+```
+
+**🔧 Chức năng chính**:
+
+Codec
+Cho phép serialize/deserialze thông tin generator trong JSON (dùng trong datapack/dimension json).
+Các tham số: maxHeight, minHeight.
+Thông số thế giới
+getWorldHeight() → 50,000 block.
+getMinimumY() → -25,000 block.
+seaLevel() → 75.
+Biome Population
+Override populateBiomes(...) để gán biome cho từng chunk.
+Sử dụng NoiseConfig và Blender để tính toán.
+Carving (Hang động, khe núi)
+carve(...): kiểm tra noise và thay block bằng AIR nếu thỏa điều kiện.
+Áp dụng riêng cho GenerationStep.Carver.AIR.
+Noise Population
+populateNoise(...): dùng NoiseChunk để sinh block dựa trên cấu hình noise.
+Chiều cao & cột block
+getHeight(...): định nghĩa chiều cao cho WORLD_SURFACE (500) và OCEAN_FLOOR (-7500).
+getColumnSample(...): trả về một VerticalBlockSample gồm STONE, DIRT, GRASS, WATER, AIR theo y-level.
+River Generation
+Hàm generateRiver(...):
+Sinh sông rộng 15–30 block.
+Nếu gặp OCEAN, MOUNTAIN, VOLCANO → kết thúc sông.
+Bờ sông: DIRT. Giữa: WATER.
+
+**📌 Tóm tắt**
+HyperChunkGenerator mở rộng hệ thống worldgen:
+Thế giới cực cao: từ -25,000 → +25,000.
+Carving + noise riêng biệt.
+Sinh sông tùy chỉnh, có logic dừng khi gặp biome đặc biệt.
+
+---
+
+##6. **ModConfiguredFeatures.java**
+
+**Mục đích**:
+Định nghĩa ConfiguredFeature – mô tả cái gì sẽ spawn (block, patch, cấu trúc nhỏ).
+
+**Code Spinet**:
+
+
+public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_RICE =
+    registerKey("wild_rice");
+
+public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
+    context.register(WILD_RICE, new ConfiguredFeature<>(
+        Feature.RANDOM_PATCH,
+        new RandomPatchFeatureConfig(
+            32, // số lần thử spawn mỗi chunk
+            6,  // bán kính XZ
+            2,  // bán kính Y
+            () -> Feature.SIMPLE_BLOCK.configure(
+                new SimpleBlockFeatureConfig(
+                    BlockStateProvider.of(BlocksRegistry.WILD_RICE)
+                )
+            )
+        )
+    ));
+}
+
+
+**Giải thích**:
+ConfiguredFeature = cái spawn (ví dụ: wild rice plant).
+RandomPatchFeatureConfig = cơ chế random patch (32 tries / chunk, lan 6 block, cao 2 block).
+BlockStateProvider = block được spawn.
+
+---
+
+##2. **ModPlacedFeatures.java**
+
+**Mục đích**:
+Định nghĩa PlacedFeature – mô tả spawn ở đâu, spawn bao nhiêu lần.
+
+**Code Spinet**:
+
+
+public static final RegistryKey<PlacedFeature> WILD_RICE_PLACED =
+    registerKey("wild_rice_placed");
+
+public static void bootstrap(Registerable<PlacedFeature> context) {
+    context.register(WILD_RICE_PLACED, new PlacedFeature(
+        context.getHolderOrThrow(ModConfiguredFeatures.WILD_RICE),
+        List.of(
+            CountPlacementModifier.of(10),         // số lần spawn mỗi chunk
+            InSquarePlacementModifier.spread(),    // trải đều trong chunk
+            HeightmapPlacementModifier.of()        // dựa trên heightmap
+        )
+    ));
+}
+
+
+**Giải thích**:
+
+ConfiguredFeature → cái spawn.
+PlacedFeature → cách spawn (số lượng, vị trí, độ cao).
+Có thể thêm filter (BiomeFilter) nếu chỉ muốn spawn ở biome cụ thể.
+
+---
+
+##3. **ModFeatures.java**
+
+**Mục đích**:
+Đăng ký Feature custom (Forge style).
+
+**Code Spinet**:
+
+
+public static final RegistryObject<Feature<NoneFeatureConfiguration>> SNOW_LAYER_FEATURE =
+    FEATURES.register("snow_layer_feature",
+        () -> new SnowLayerFeature(NoneFeatureConfiguration.CODEC));
+Giải thích:
+Feature = logic sinh custom (ví dụ: SnowLayerFeature).
+PlacedFeature = feature + placement rule.
+DeferredRegister (Forge) dùng để đăng ký vào registry.
+Mối liên kết:
+ModFeatures → định nghĩa Feature gốc.
+ModConfiguredFeatures → định nghĩa Feature cụ thể (cấu hình block).
+ModPlacedFeatures → đặt Feature đó vào thế giới với rule spawn.
+
+
 
 
