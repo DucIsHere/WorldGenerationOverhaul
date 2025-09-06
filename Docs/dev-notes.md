@@ -9,7 +9,7 @@
 
 ## 🚧 TODO
 - [ ] Implement `pickBiome()` in **HyperBiomeSource** (map noise → biome).
-- [ ] Add support for **700+ biomes** via registry.
+- [ ] Add support for **150+ biomes** via registry.
 - [ ] Implement **surface rules** (snow, sand, stone, etc.).
 - [ ] Add **special biome mechanics**:
   - BlizzardHell → campfires extinguish, lava freezes to obsidian.
