@@ -7,15 +7,15 @@ A starter Fabric mod scaffold (MC **1.20.1**, Java **17**) for **custom Multi‑
 
 ---
 
-## Project Tree
+## Project Tree Alpha
 ```
 hypergenworld-overhaul/
 ├─ build.gradle
 ├─ settings.gradle
 ├─ gradle.properties
 ├─ src/main/java/
-│  └─ com/duci/ hypergen/
-│     ├─ HyperGenWorldMod.java
+│  └─ com/ducishere/hyperworldgen/
+│     ├─ HyperWorldGen.java
 │     ├─ registry/ModRegistries.java
 │     ├─ world/biome/HyperBiomeSource.java
 │     ├─ world/biome/NoiseParam.java
