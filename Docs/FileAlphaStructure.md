@@ -53,7 +53,7 @@ HyperGenWorld/
 
 ## 📝 Tài liệu
 
-- [Worldgen Overhaul](Docs/Code%20Explanation.md) – giải thích hệ thống worldgen.  
+- [Worldgen Overhaul](Docs/CodeExplanation.md) – giải thích hệ thống worldgen.  
 - `dev-notes.md` – ghi chú dev, TODO list.  
 
 ---
