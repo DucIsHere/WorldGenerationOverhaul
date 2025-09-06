@@ -1,5 +1,8 @@
-🧩 Code Explanation – WorldGenerationOverhaul
+🧩 Code Explanation - WorldGenerationOverhaul
+
 Tài liệu này giải thích các class chính trong dự án, mục đích và cách chúng hoạt động.
+
+***Tài liệu này được giải ra vẫn có thể có sai sót và lỗi chính tả. Nếu phát hiện sẽ được sửa ngay, và đây là tài liệu tham khảo***
 
 ---
 
@@ -262,7 +265,7 @@ Sinh sông tùy chỉnh, có logic dừng khi gặp biome đặc biệt.
 
 **Code Spinet**:
 
-
+```java
 public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_RICE =
     registerKey("wild_rice");
 
@@ -281,7 +284,7 @@ public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         )
     ));
 }
-
+```
 
 **Giải thích**:
 ConfiguredFeature = cái spawn (ví dụ: wild rice plant).
@@ -297,7 +300,7 @@ BlockStateProvider = block được spawn.
 
 **Code Spinet**:
 
-
+```java
 public static final RegistryKey<PlacedFeature> WILD_RICE_PLACED =
     registerKey("wild_rice_placed");
 
@@ -311,7 +314,7 @@ public static void bootstrap(Registerable<PlacedFeature> context) {
         )
     ));
 }
-
+```
 
 **Giải thích**:
 
@@ -328,15 +331,18 @@ Có thể thêm filter (BiomeFilter) nếu chỉ muốn spawn ở biome cụ th�
 
 **Code Spinet**:
 
-
+```java
 public static final RegistryObject<Feature<NoneFeatureConfiguration>> SNOW_LAYER_FEATURE =
     FEATURES.register("snow_layer_feature",
         () -> new SnowLayerFeature(NoneFeatureConfiguration.CODEC));
-Giải thích:
+```
+
+**Giải thích+**:
 Feature = logic sinh custom (ví dụ: SnowLayerFeature).
 PlacedFeature = feature + placement rule.
 DeferredRegister (Forge) dùng để đăng ký vào registry.
-Mối liên kết:
+
+**Mối liên kết**:
 ModFeatures → định nghĩa Feature gốc.
 ModConfiguredFeatures → định nghĩa Feature cụ thể (cấu hình block).
 ModPlacedFeatures → đặt Feature đó vào thế giới với rule spawn.
@@ -344,3 +350,7 @@ ModPlacedFeatures → đặt Feature đó vào thế giới với rule spawn.
 
 
 
+Đây là tài liệu được viết lại, vẫn sẽ có sai sót xin thông cảm
+**By Wandering**
+
+© 2025 DucIsHere.
