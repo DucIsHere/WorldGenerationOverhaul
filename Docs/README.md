@@ -5,7 +5,7 @@
 - Độ cao thế giới: từ **-25,000** đến **+25,000** block.
 - Biome rộng: trung bình **200–300 chunk** (~51200–76800 block).
 - Hệ thống **MultiNoiseBiomeSource** tùy chỉnh, sử dụng **FastNoiseLite**.
-- Hỗ trợ **700+ biome** với các cơ chế đặc biệt (BlizzardHell, EverestSummit, EchoingTundra...).
+- Hỗ trợ **150+ biome** với các cơ chế đặc biệt (BlizzardHell, EverestSummit, EchoingTundra...).
 
 ---
 
