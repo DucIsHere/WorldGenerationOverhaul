@@ -25,6 +25,7 @@ Run dev client:
 ./gradlew runClient
 Build mod:
 ./gradlew build
+```
 
 ---
 
@@ -32,7 +33,9 @@ Build mod:
 Preview
 Here’s how to define and register a new block inside HyperGenWorld.
 Blocks are registered in registry/ModBlocks.java.
-Code (real, edited):
+Code :
+
+```java
 public class ModBlocks {
     public static final Block BLUE_STONE = new Block(
         FabricBlockSettings.of(Material.STONE).strength(6.0f, 10.0f).requiresTool()
@@ -44,6 +47,8 @@ public class ModBlocks {
             new BlockItem(BLUE_STONE, new Item.Settings()));
     }
 }
+```
+
 Now the block blue_stone will appear in-game with higher hardness.
 
 ---
@@ -51,9 +56,10 @@ Now the block blue_stone will appear in-game with higher hardness.
 🌍 Example: Custom Worldgen
 Preview
 Modify HyperChunkGenerator to include a new noise layer for ores.
-Code (real, edited):
+Code :
 // Inside HyperChunkGenerator.java
 
+```java
 private void generateBlueStoneOre(ChunkRegion region, Random random, BlockPos origin) {
     int veinSize = 8;
     for (int i = 0; i < veinSize; i++) {
@@ -66,6 +72,7 @@ private void generateBlueStoneOre(ChunkRegion region, Random random, BlockPos or
         }
     }
 }
+```
 ✅ Summary
 Place .jar in mods/ to play.
 Use Gradle tasks for dev (runClient, build).
@@ -79,6 +86,7 @@ Add features by editing registry classes or chunk generator.
 # 🛠️ Developer Notes – HyperGenWorld
 
 This file contains internal notes and TODOs for ongoing development.
+```
 
 ---
 
