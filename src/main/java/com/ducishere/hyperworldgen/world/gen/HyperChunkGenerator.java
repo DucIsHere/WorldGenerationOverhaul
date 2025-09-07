@@ -9,6 +9,7 @@ import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 
 public class HyperChunkGenerator extends ChunkGenerator {
+  
   public static final Codec<HyperChunkGenerator> CODEC = RecordCodecBuilder.create(instance -> instance.group(
     Codec.INT.fieldOf("maxHeight").forGetter(cg -> cg.maxHeight),
     Codec.INT.fieldOf("minHeight").forGetter(cg -> cg.minHeight)
@@ -183,6 +184,50 @@ public VerticalBlockSample getColumnSample(int x, int z, HeightLimitView world, 
         }
     }
 }
+
+  @Override
+    public void generateChunk(World world, int chunkX, int chunkZ){
+        for(int x=0;x<16;x++){
+            for(int z=0;z<16;z++){
+                int worldX = chunkX*16 + x;
+                int worldZ = chunkZ*16 + z;
+
+                // Sample all noise
+                double baseHeight = NoiseBackendManager.sample("opensimplex", worldX,0,worldZ)*1000;
+                double mountain = NoiseBackendManager.sample("ridged", worldX,0,worldZ)*5000;
+                double terrace = NoiseBackendManager.sample("terrace", worldX,0,worldZ)*500;
+                double warp = NoiseBackendManager.sample("domainwarp", worldX,0,worldZ)*200;
+                double hybrid = NoiseBackendManager.sample("hybrid", worldX,0,worldZ)*300;
+
+                int finalHeight = (int)(baseHeight + mountain + terrace + warp + hybrid);
+
+                // Fill terrain
+                for(int y=0;y<=finalHeight;y++){
+                    BlockPos pos = new BlockPos(worldX, y, worldZ);
+                    world.setBlockState(pos, net.minecraft.block.Blocks.STONE.getDefaultState());
+                }
+
+                // Surface river
+                double riverNoise = NoiseBackendManager.sample("river", worldX, finalHeight, worldZ);
+                if(riverNoise>0.7){
+                    HyperRiverGenerator.carveSurfaceRiver(world, worldX, finalHeight, worldZ);
+                }
+
+                // Cave
+                double caveNoise = NoiseBackendManager.sample("cave", worldX, finalHeight, worldZ);
+                if(caveNoise>0.65){
+                    HyperCaveGenerator.carveCave(world, worldX, finalHeight, worldZ);
+                }
+
+                // Assign biome
+                BiomePicker.assignBiome(world, worldX, finalHeight, worldZ);
+            }
+        }
+
+        // Mountain waterfall source
+        MountainGenerator.generateMountain(world, chunkX, chunkZ);
+    }
+
 
   
   @Override
