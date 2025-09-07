@@ -19,8 +19,8 @@ HyperGenWorld/
  │   ├─ FastNoiseLiteBackend.java
  │   └─ registry/...
  ├─ src/main/resources/
- │   ├─ data/hypergenworld/dimension_type/hyper_overworld.json
- │   ├─ data/hypergenworld/dimension/hyper_overworld.json
+ │   ├─ data/hypergenworld/noise_settings/overworld.json
+ │   ├─ data/hypergenworld/dimension/overworld.json
  │   └─ fabric.mod.json
  ├─ docs/
  │   ├─ worldgen-overhaul.md
