@@ -199,7 +199,11 @@ public VerticalBlockSample getColumnSample(int x, int z, HeightLimitView world, 
                 double warp = NoiseBackendManager.sample("domainwarp", worldX,0,worldZ)*200;
                 double hybrid = NoiseBackendManager.sample("hybrid", worldX,0,worldZ)*300;
                 double cellular = NoiseBackendManager.sample("cellular", worldX,0,worldZ);
-                double terrace = NoiseBackend
+                double terrace = NoiseBackendManager.sample("terrablend", worldX,0,worldZ);
+                double cave = NoiseBackendManager.sample("cave", worldX,0,worldZ);
+                double fastnoise = NoiseBackendManager.sample("fastnoise", worldX,0,worldZ);
+                double river = NoiseBackendManager.sample("river", worldX,0,worldZ);
+              
 
                 int finalHeight = (int)(baseHeight + mountain + terrace + warp + hybrid);
 
