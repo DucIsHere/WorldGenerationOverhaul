@@ -1,3 +1,5 @@
+package com.ducishere.hyperworldgen.world.noise;
+
 public class NoiseBackendManager {
 
     public static double sample(String name, double x, double y, double z) {
