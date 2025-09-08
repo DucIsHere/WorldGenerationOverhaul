@@ -9,6 +9,34 @@
 
 ---
 
+##  Cấu trúc Noise
+
+```r
+NoiseBackendManager.java
+├─ opensimplex
+├─ fastnoise
+├─ ridged
+├─ terrace
+├─ domainwarp
+├─ river
+├─ cave
+├─ volcano
+├─ waterfall
+├─ cellular
+├─ hybrid
+├─ terrablend
+├─ microhills
+├─ mesa_patch
+├─ mushroom_patch
+├─ glacier_patch
+├─ lava_pocket
+├─ snow_layer
+├─ ... >50 noise khác tùy biome / feature
+
+```
+
+---
+
 ## 📂 Cấu trúc repo
 
 ```
