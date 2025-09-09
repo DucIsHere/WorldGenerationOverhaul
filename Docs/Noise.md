@@ -2,7 +2,7 @@
 
 **Noise**
 
-🔹 1️⃣ **Base terrain noise (cho tất cả biome)**
+## 🔹 1️⃣ Base terrain noise (cho tất cả biome)
 
 -OpenSimplexBackend → hills, plains, general terrain
 
@@ -18,7 +18,7 @@
 
 -HybridBackend → blend tất cả backend flexible
 
-🔹 2️⃣ **Feature-specific noise**
+## 🔹 2️⃣ Feature-specific noise
 
 -CaveBackend → underground cave system
 
@@ -42,7 +42,7 @@
 
 -SandPatchBackend → desert / beach micro detail
 
-🔹 3️⃣ **Biome + noise mapping (modular)**
+## 🔹 3️⃣ Biome + noise mapping (modular)
 
 -Rice Tropical / Tea Field / Rice Field / Vegetable Farmer → TerraceBackend + TerraBlend + OpenSimplex
 
