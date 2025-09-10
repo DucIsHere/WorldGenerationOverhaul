@@ -2,7 +2,7 @@ package com.ducishere.hyperworldgen.world.pipeline;
 
 import com.ducishere.hyperworldgen.world.noise.backends.*;
 
-public class DesertPipeline {
+public class AshenGorgePipeline {
     public static double sample(double x, double y, double z, long seed) {
         double dune = new DuneBackend(seed, 0.03, 0.8).sample(x, y, z);
         double ridged = new RidgedBackend(seed, 0.05, 0.4).sample(x, y, z);
