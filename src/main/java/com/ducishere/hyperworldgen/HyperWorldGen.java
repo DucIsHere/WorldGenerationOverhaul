@@ -21,13 +21,11 @@ public class HyperWorldGen implements ModInitializer {
         System.out.println("Initializing HyperWorldGen...");
 
 
-        ModEffects.registerModEffects();
 
         ModConfiguredFeatures.bootstrap();
         ModPlacedFeatures.bootstrap();
 
         ModBiomes.registerBiomes();
-        FrostbiteHandler.register();
 
         // Nếu cần truyền registry, truyền đúng args
         // ModConfiguredFeatures.bootstrap(registry);
@@ -35,7 +33,6 @@ public class HyperWorldGen implements ModInitializer {
 
         ModWorldGen.generateWorldGen();
 
-        HandledScreens.register(ModScreenHandlers.CRYO_FURNACE_SCREEN_HANDLER, CryoFurnaceScreen::new);
 
         ServerTickEvents.END_WORLD_TICK.register(world -> {
             if(world instanceof ServerWorld serverWorld){
