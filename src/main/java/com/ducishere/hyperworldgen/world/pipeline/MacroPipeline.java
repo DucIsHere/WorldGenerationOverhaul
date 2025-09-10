@@ -9,7 +9,7 @@ public class MacroPipeline {
         double erosion = new ErosionBackend(seed, 0.002, 0.8).sample(x, y, z);
         double macro = new MacroTerrainBackend(seed, 0.004, 0.5).sample(x, y, z);
 
-        double baseHeight = (cont + macro - erosion) * 20000; // map về -25000 ~ 50000
+        double baseHeight = (cont + macro - erosion) * 1000; // map về -25000 ~ 50000
         return baseHeight;
     }
 }
