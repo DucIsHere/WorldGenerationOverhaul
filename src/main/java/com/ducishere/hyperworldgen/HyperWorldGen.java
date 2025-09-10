@@ -24,7 +24,9 @@ public class HyperWorldGen implements ModInitializer {
 
         ModConfiguredFeatures.bootstrap();
         ModPlacedFeatures.bootstrap();
-
+        
+        HyperNoiseRegistry.register();
+        HyperPipelineRegistry.register();
         ModBiomes.registerBiomes();
 
         // Nếu cần truyền registry, truyền đúng args
