@@ -15,6 +15,13 @@ public class ModBiomes {
                 BlizzardHellBiome.createBiome()
         );
 
+@Override
+public double getHeight(double x, double y, double z, long seed) {
+    return HyperPipelineRegistry.get("desert")
+            .apply(new HyperPipelineRegistry.PipelineContext(x, y, z, seed));
+}
+
+
         System.out.println("Biomes registered");
     }
 }
