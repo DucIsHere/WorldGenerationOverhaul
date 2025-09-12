@@ -10,8 +10,8 @@ Developer **DucIsHere**
 
 ## Features
 - **150+ Biomes** (Surface & Caves)
-- **Vertical Scale**: Max Height `25,000` | Min Height `-15,000`
-- **Survival Systems**: Temperature & Thirst, Stamina, Water Pressure
+- **Vertical Scale**: Max Height `50,000` | Min Height `-25,000`
+- **Survival Systems**: Water Pressure
 
 ---
 
