@@ -1,58 +1,50 @@
-# MIT License / Giấy phép MIT / MIT 许可证
+============================
+ Full Overhaul Series Library
+ Copyright (c) 2025 DucIsHere
+============================
 
-Copyright © 2025 DucIsHere
+[EN - English (US/UK)]
+This library/mod is FREE FOREVER.
+- You may use, modify, and share the CODE.
+- You MUST credit the original author "DucIsHere".
+- You MAY NOT sell, trade, reupload for profit, or distribute behind a paywall.
+- Commercial use of any kind is FORBIDDEN.
+- IMPORTANT: Textures, models, sounds, VFX/SFX, and 3D assets are NOT free. 
+  They are All Rights Reserved. Do NOT use or redistribute them.
+- If you paid for this library or assets, you got scammed.
 
----
+[VN - Tiếng Việt]
+Thư viện/mod này HOÀN TOÀN MIỄN PHÍ.
+- Bạn có thể sử dụng, chỉnh sửa, và chia sẻ CODE.
+- BẮT BUỘC phải ghi credit "DucIsHere".
+- CẤM bán, trao đổi, reup để kiếm lợi nhuận, hoặc phát hành sau paywall.
+- Mọi hình thức thương mại HOÀN TOÀN CẤM.
+- LƯU Ý: Texture, model, âm thanh, VFX/SFX, asset 3D KHÔNG được phép sử dụng lại hay phân phối (All Rights Reserved).
+- Nếu bạn đã bỏ tiền mua mod này hoặc asset → bạn đã bị lừa.
 
-## English
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+[CN - 简体中文]
+此库/模组永久免费。
+- 可以自由使用、修改和分享代码。
+- 必须注明作者 "DucIsHere"。
+- 禁止出售、交易、盈利性转载，或放在付费墙后发布。
+- 严禁任何形式的商业用途。
+- 注意：贴图、模型、音效、VFX/SFX、3D资源不免费，版权所有。禁止使用或分发。
+- 如果你花钱买了这个模组或资源，你被骗了。
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+[JP - 日本語]
+このライブラリ/Modは完全に無料です。
+- コードの使用、改造、共有は自由です。
+- 作者「DucIsHere」を必ずクレジットしてください。
+- 販売、取引、営利目的の再配布、またはペイウォールの背後での配布は禁止です。
+- 商用利用は一切禁止です。
+- 注意：テクスチャ、モデル、サウンド、VFX/SFX、3Dアセットは無料ではなく、すべて著作権所有。使用や再配布は禁止されています。
+- このModやアセットをお金を払って購入した場合、あなたは騙されました。
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
----
-
-## Vietnamese / Tiếng Việt
-Quyền được cấp phép miễn phí cho bất kỳ ai có bản sao
-của phần mềm này và các tệp tài liệu liên quan (gọi là "Phần mềm"), 
-để sử dụng phần mềm mà không bị giới hạn, bao gồm nhưng không giới hạn 
-các quyền sử dụng, sao chép, sửa đổi, gộp, xuất bản, phân phối, cấp phép phụ, 
-và/hoặc bán bản sao của Phần mềm, và cho phép những người được cung cấp làm như vậy, 
-theo các điều kiện sau:
-
-Thông báo bản quyền trên và thông báo cấp phép này phải được bao gồm trong tất cả 
-các bản sao hoặc phần đáng kể của Phần mềm.
-
-PHẦN MỀM ĐƯỢC CUNG CẤP "NGUYÊN TRẠNG", KHÔNG CÓ BẢO HÀNH DƯỚI BẤT KỲ HÌNH THỨC NÀO, 
-DÙ RÕ RÀNG HAY NGẦM, BAO GỒM NHƯNG KHÔNG GIỚI HẠN ĐẾN BẢO HÀNH THƯƠNG MẠI, 
-TÍNH THÍCH HỢP CHO MỘT MỤC ĐÍCH CỤ THỂ VÀ KHÔNG VI PHẠM. 
-TÁC GIẢ HOẶC NGƯỜI GIỮ BẢN QUYỀN KHÔNG CHỊU TRÁCH NHIỆM VỀ BẤT KỲ KHIẾU NẠI, 
-THIỆT HẠI HOẶC TRÁCH NHIỆM KHÁC, DÙ TRONG HỢP ĐỒNG, HÀNH ĐỘNG PHÁP LÝ HOẶC KHÁC, 
-PHÁT SINH TỪ HOẶC LIÊN QUAN ĐẾN PHẦN MỀM HOẶC VIỆC SỬ DỤNG HOẶC TƯƠNG TÁC KHÁC VỚI PHẦN MỀM.
-
----
-
-## Chinese / 中文
-特此免费授予任何获得本软件及相关文档文件（以下简称“软件”）副本的人，
-在不受限制的情况下使用本软件，包括但不限于使用、复制、修改、合并、发布、分发、
-再许可及/或销售本软件的副本，并允许向其提供本软件的人这样做，须遵守以下条件：
-
-上述版权声明和本许可声明应包含在本软件的所有副本或重要部分中。
-
-本软件按“原样”提供，不附带任何形式的明示或暗示保证，包括但不限于对适销性、
-特定用途适用性及非侵权性的保证。在任何情况下，作者或版权持有人均不对任何索赔、
-损害或其他责任承担责任，无论是在合同诉讼、侵权或其他方面，由本软件或其使用
-或其他交易产生或与之相关。
+[RS - Русский]
+Эта библиотека/мод БЕСПЛАТНА навсегда.
+- Разрешено использовать, изменять и распространять ТОЛЬКО КОД.
+- ОБЯЗАТЕЛЬНО указывать автора "DucIsHere".
+- ЗАПРЕЩЕНО продавать, обменивать, распространять за деньги или размещать за paywall.
+- Любое коммерческое использование СТРОГО ЗАПРЕЩЕНО.
+- Важно: текстуры, модели, звуки, VFX/SFX и 3D-ресурсы не являются бесплатными, все права защищены. Использование или распространение запрещено.
+- Если вы заплатили за этот мод или ресурсы, вас обманули.
