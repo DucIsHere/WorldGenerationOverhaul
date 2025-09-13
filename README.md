@@ -1,8 +1,9 @@
 # World Generation Overhaul
 
-Made by **DucIsHere**
+Made by **Unkown**
 
-Developer **DucIsHere**
+
+Support by **Community Mod&Modpack Developer**
 
 
 
