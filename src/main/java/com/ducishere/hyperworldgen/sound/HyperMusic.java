@@ -15,7 +15,7 @@ public class HyperMusic {
 
     public static final MusicSound CUSTOM_MENU = new MusicSound(
         RegistryKey.of(RegistryKeys.SOUND_EVENT, FREE_LUCK_ID),
-        0, 0, true
+        200, 200, true
     );
 
     public static void init() {
