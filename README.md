@@ -1,6 +1,6 @@
 # World Generation Overhaul
 
-Made by **Unkown**
+Made by **?**
 
 
 Support by **Community Mod&Modpack Developer**
