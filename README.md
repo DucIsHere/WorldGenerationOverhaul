@@ -1,9 +1,9 @@
 # World Generation Overhaul
 
 Made by **?**
+Developer **Unkown?**
 
 
-Support by **Community Mod&Modpack Developer**
 
 
 
