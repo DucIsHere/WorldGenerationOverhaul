@@ -13,7 +13,6 @@ Developer **Unkown?**
 ## Features
 - **150+ Biomes** (Surface & Caves)
 - **Vertical Scale**: Max Height `50,000` | Min Height `-25,000`
-- **Survival Systems**: Water Pressure
 
 ---
 
