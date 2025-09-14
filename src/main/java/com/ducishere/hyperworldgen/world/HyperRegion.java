@@ -11,7 +11,7 @@ import net.minecraft.world.biome.source.Climate;
 
 public class HyperRegion extends Region {
 
-    public static final Identifier LOCATION = new Identifier("modid", "hyper_region");
+    public static final Identifier LOCATION = new Identifier("hyperworldgen", "hyper_region");
 
     public HyperRegion(int weight) {
         super(LOCATION, RegionType.OVERWORLD, weight);
@@ -24,7 +24,6 @@ public class HyperRegion extends Region {
         // ----- Rice Tropical (cực rộng 50~75 km) -----
         Climate.Parameter temp = Climate.Parameter.span(0.8F, 1.0F); // nóng
         Climate.Parameter humidity = Climate.Parameter.span(0.8F, 1.0F); // ẩm
-        Climate.Parameter continentalness = Climate.Parameter.span(-0.8F, 0.8F); // siêu rộng
         Climate.Parameter erosion = Climate.Parameter.span(-0.2F, 0.6F); // hơi phẳng
         Climate.Parameter depth = Climate.Parameter.point(0.0F);
         Climate.Parameter weirdness = Climate.Parameter.span(-0.6F, 0.6F);
