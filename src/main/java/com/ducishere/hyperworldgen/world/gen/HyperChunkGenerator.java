@@ -26,7 +26,7 @@ public ExampleChunkGenerator(int maxHeight, int minHeight) {
 
   @Override
     public int getWorldHeight() {
-      return 50000;
+      return 25000;
   }
 
   @Override
