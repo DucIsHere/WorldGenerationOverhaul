@@ -1,8 +1,8 @@
 {
   "sea_level": 75,
   "noise": {
-    "min_y": -25000,
-    "height": 50000,
+    "min_y": -10000,
+    "height": 20000,
     "size_horizontal": 1,
     "size_vertical": 2,
     "xz_scale": 0.0000333,
