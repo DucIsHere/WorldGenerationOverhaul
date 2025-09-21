@@ -40,12 +40,12 @@ public class HyperChunkGenerator extends ChunkGenerator {
 
     @Override
     public int getWorldHeight() {
-        return maxHeight; // ví dụ 20000
+        return 20000; // ví dụ 20000
     }
 
     @Override
     public int getMinimumY() {
-        return minHeight; // ví dụ -10000
+        return -10000; // ví dụ -10000
     }
 
     @Override
