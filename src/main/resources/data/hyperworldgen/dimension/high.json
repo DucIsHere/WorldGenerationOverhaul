@@ -1,0 +1,7 @@
+{
+  "type": "hyperworldgen:hyper_type",
+  "generator": {
+    "type": "hyperworldgen:hyper_chunk_generator",
+    "settings": "minecraft:overworld"
+  }
+}
