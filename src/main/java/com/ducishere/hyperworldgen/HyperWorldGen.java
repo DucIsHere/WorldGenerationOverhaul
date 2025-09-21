@@ -19,6 +19,10 @@ public class HyperWorldGen implements ModInitializer {
     @Override
     public void onInitialize() {
         System.out.println("Initializing HyperWorldGen...");
+        
+        Registry.register(Registries.CHUNK_GENERATOR, 
+        new Identifier("hyperworldgen", "hyper_chunk_generator"), 
+        HyperChunkGenerator.CODEC);
 
 
 
