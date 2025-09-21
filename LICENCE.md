@@ -1,4 +1,4 @@
-# DucIsHere Overhaul Series
+
 # Copyright (c) 2025
 
 ---
