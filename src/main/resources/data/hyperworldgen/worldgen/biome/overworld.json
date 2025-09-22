@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "hyperworldgen:hyper_plains",
+    "hyperworldgen:hyper_mountains",
+    "hyperworldgen:hyper_forest",
+    "hyperworldgen:hyper_desert",
+    "hyperworldgen:hyper_snowfield",
+    "hyperworldgen:hyper_glacier",
+    "hyperworldgen:hyper_volcano",
+    "hyperworldgen:hyper_ocean",
+    "hyperworldgen:hyper_river",
+    "hyperworldgen:hyper_lake",
+    "hyperworldgen:hyper_canyon",
+    "hyperworldgen:hyper_jungle",
+    "hyperworldgen:hyper_savanna",
+    "hyperworldgen:hyper_swamp",
+    "hyperworldgen:hyper_taiga",
+    "hyperworldgen:hyper_hills",
+    "hyperworldgen:hyper_badlands",
+    "hyperworldgen:hyper_mesa",
+    "hyperworldgen:hyper_dune",
+    "hyperworldgen:hyper_plateau"
+  ]
+}
