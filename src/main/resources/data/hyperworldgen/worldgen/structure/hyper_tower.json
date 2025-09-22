@@ -1,0 +1,9 @@
+{
+  "type": "hyperworldgen:hyper_tower",
+  "start_pool": "hyperworldgen:hyper_tower/base",
+  "size": 5,
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin",
+  "biomes": "#hyperworldgen:has_structure/hyper_tower",
+  "spawn_overrides": {}
+}
