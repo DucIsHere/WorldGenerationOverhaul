@@ -38,6 +38,10 @@ public class HyperWorldGen implements ModInitializer {
         // ModPlacedFeatures.bootstrap(registry);
 
         ModWorldGen.generateWorldGen();
+        FeatureRegistry.registerFeature();
+        StructureRegistry.init();
+
+        TerraBlenderApi.RegisterRegion(new HyperRegion(new Identifier("hyperworldgen","main"),5));
 
 
         ServerTickEvents.END_WORLD_TICK.register(world -> {
