@@ -10,6 +10,17 @@ public class HyperNoiseRouter {
         double terrainScale = 0.0003;
         double biomeScale = 0.00005;
 
+        DensityFunction mountain = DensityFunctions.ridgedNoise(bigNoiseParams).mul(180);
+        DensityFunction small = DensityFunctions.ridgedNoise(smallNoiseParams).mul(80);
+        DensityFunction valley = DensityFunctions.constant(1.0)
+            .sub(DensityFunctions.abs(DensityFunctions.noise(valleyNoiseParams)))
+            .mul(60);
+
+        DensityFunction height = DensityFunctions.add(mountain, small)
+            .add(valley.negate())
+            .clamp(-10000, 20000);
+
+
         DensityFunction ridged = new NoiseBackendFunction("ridged", terrainScale);
         DensityFunction tectonic = new NoiseBackendFunction("tectonic", terrainScale);
         DensityFunction mountain = new NoiseBackendFunction("fractalridged", terrainScale);
