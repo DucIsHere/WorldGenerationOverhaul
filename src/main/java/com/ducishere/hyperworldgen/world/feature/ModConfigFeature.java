@@ -15,79 +15,13 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 public class ModConfiguredFeatures {
 
-    public static final RegistryKey<ConfiguaredFeature<?, ?>> WILD_TEA_BUSH =
-            registerKey("wild_tea_bush")(
-
-    // key cho wild rice
-    public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_RICE =
-            registerKey("wild_rice");
-
-    // key cho snow layer 8 (ví dụ)
+    
     public static final RegistryKey<ConfiguredFeature<?, ?>> SNOW_LAYER_8 =
             registerKey("snow_layer_8");
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_CARROTS =
-            registryKey(wild_carrots);
+    
 
-    public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
-        // Wild Rice (dùng farmersdelight:wild_rice block)
-        context.register(WILD_RICE, new ConfiguredFeature<>(
-                Feature.RANDOM_PATCH,
-                new RandomPatchFeatureConfig(
-                        32, // tries per chunk
-                        6,  // spread xz
-                        2,  // spread y
-                        () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                                BlockStateProvider.of(
-                                        net.minecraft.block.BlocksRegistry.WILD_RICE // nếu Farmers Delight đăng ký block này
-                                )
-                        ))
-                )
-        ));
-
-        context.register(WILD_TEA_BUSH, new ConfiguaredFeature<>(
-                Feature.RANDOM_PATCH,
-                new RandomPatchFeatureConfig(
-                    32,
-                    6,
-                    2,
-                    () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                            BlockStateProvider.of(
-                                    net.minecraft.block.BlockRegistry.WILD_TEA_BUSH
-                            )
-                    ))
-                )
-        ));
-
-        context.register(WIlD_CARROTS, new ConfiguredFeature<>(
-                Feature.RANDOM_PATCH,
-                new RandomPatchFeatureConfig(
-                    64,
-                    8,
-                    2,
-                    () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                            BlockStateProvider.of(
-                                net.minecraft.block.BlockRegistry.WILD_CARROTS
-                            )
-                    ))
-                )
-        ));
-
-        context.register(WIlD_POTATOES, new ConfiguredFeature<>(
-                Feature.RANDOM_PATCH,
-                new RandomPatchFeatureConfig(
-                    64,
-                    8,
-                    2,
-                    () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                            BlockStateProvider.of(
-                                net.minecraft.block.BlockRegistry.WILD_POTATOES
-                            )
-                    ))
-                )
-        ));
-
-        
+    
 
         // Snow Layer 8 (ví dụ)
         context.register(SNOW_LAYER_8, new ConfiguredFeature<>(
