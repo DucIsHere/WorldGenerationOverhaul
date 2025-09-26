@@ -40,6 +40,7 @@ public class HyperWorldGen implements ModInitializer {
         ModWorldGen.generateWorldGen();
         FeatureRegistry.registerFeature();
         StructureRegistry.init();
+        ClimateManager.registerRegions();
 
         TerraBlenderApi.RegisterRegion(new HyperRegion(new Identifier("hyperworldgen","main"),5));
 
