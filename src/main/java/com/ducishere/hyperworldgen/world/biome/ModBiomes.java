@@ -5,23 +5,28 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.level.biome.Biome;
 
-public class ModBiomes {
-    public static Biome BLIZZARD_HELL;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+public class ModBiomes {
+    private static final Map<String, Biome> BIOMES = new LinkedHashMap<>();
+
+    // Thêm biome (Java factory)
+    public static void addBiome(String id, Biome biome) {
+        BIOMES.put(id, biome);
+    }
+
+    // Load tất cả biome
     public static void registerBiomes() {
-        BLIZZARD_HELL = Registry.register(
-                Registries.BIOME,
-                new Identifier("hyperworldgen", "blizzard_hell"),
-                BlizzardHellBiome.createBiome()
+        BIOMES.forEach((id, biome) ->
+            Registry.register(Registries.BIOME, new Identifier("hyperworldgen", id), biome)
         );
 
-@Override
-public double getHeight(double x, double y, double z, long seed) {
-    return HyperPipelineRegistry.get("desert")
-            .apply(new HyperPipelineRegistry.PipelineContext(x, y, z, seed));
-}
+        System.out.println("Registered " + BIOMES.size() + " biomes!");
+    }
 
-
-        System.out.println("Biomes registered");
+    // Lấy biome (tùy chọn)
+    public static Biome get(String id) {
+        return BIOMES.get(id);
     }
 }
